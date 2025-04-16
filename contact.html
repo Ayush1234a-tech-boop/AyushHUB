@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact | Ayush HUB</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <title>𝗔𝘆𝘂𝘀𝗵 𝗛𝗨𝗕||The web of Anushtup Nath</title>
   <link rel="icon" type="image/x-icon" href="ytlogo.jpg">
   <style>
     * {
@@ -47,8 +46,25 @@
       color: white;
       min-height: 100vh;
       padding: 30px 20px;
-      position: sticky;
       top: 0;
+    }
+
+    .sidebar.desktop {
+      position: sticky;
+    }
+
+    .sidebar.mobile {
+      position: fixed;
+      left: 0;
+      top: 0;
+      height: 100vh;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 1000;
+    }
+
+    .sidebar.mobile.active {
+      transform: translateX(0);
     }
 
     .sidebar .logo {
@@ -74,6 +90,30 @@
       background: #2563eb;
       color: white;
       font-weight: 600;
+    }
+
+    .sidebar .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      color: white;
+      font-size: 24px;
+      border: none;
+      cursor: pointer;
+      display: none;
+    }
+
+    .sidebar-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      display: none;
+    }
+
+    .sidebar-overlay.active {
+      display: block;
     }
 
     .main-content {
@@ -200,8 +240,12 @@
     }
 
     @media (max-width: 768px) {
-      .sidebar {
+      .sidebar.desktop {
         display: none;
+      }
+
+      .sidebar.mobile .close-btn {
+        display: block;
       }
 
       .main-content {
@@ -268,15 +312,28 @@
 </head>
 <body>
   <button id="darkToggle" class="toggle-btn" title="Toggle Dark Mode">🌙</button>
+  <button id="menuToggle" class="toggle-btn" title="Toggle Menu" style="right: 70px;">☰</button>
 
-  <div class="sidebar">
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="sidebar desktop">
     <div class="logo">Ayush HUB</div>
     <nav>
       <a href="index.html">Home</a>
       <a href="./iPortfolio-1.0.0/index.html">About</a>
-      
       <a href="https://in.docworkspace.com/d/sIBTPh76nApL85L8G">Resume</a>
       <a href="map.html" class="active">Contact</a>
+    </nav>
+  </div>
+
+  <div class="sidebar mobile" id="mobileSidebar">
+    <button class="close-btn" id="closeSidebar">&times;</button>
+    <div class="logo">Ayush HUB</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="./iPortfolio-1.0.0/index.html">About</a>
+      <a href="https://in.docworkspace.com/d/sIBTPh76nApL85L8G">Resume</a>
+      <a href="contact.html" class="active">Contact</a>
     </nav>
   </div>
 
@@ -323,6 +380,21 @@
     document.getElementById("darkToggle").addEventListener("click", function () {
       document.body.classList.toggle("dark");
       this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+    });
+
+    document.getElementById("menuToggle").addEventListener("click", function () {
+      document.getElementById("mobileSidebar").classList.add("active");
+      document.getElementById("sidebarOverlay").classList.add("active");
+    });
+
+    document.getElementById("closeSidebar").addEventListener("click", function () {
+      document.getElementById("mobileSidebar").classList.remove("active");
+      document.getElementById("sidebarOverlay").classList.remove("active");
+    });
+
+    document.getElementById("sidebarOverlay").addEventListener("click", function () {
+      document.getElementById("mobileSidebar").classList.remove("active");
+      this.classList.remove("active");
     });
   </script>
 </body>
