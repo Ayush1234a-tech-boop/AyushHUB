@@ -1,30 +1,62 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>𝗔𝘆𝘂𝘀𝗵 𝗛𝗨𝗕||The web of Anushtup Nath</title>
-<link rel="icon" type="image/x-icon" href="ytlogo.jpg">
-</head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>𝗔𝘆𝘂𝘀𝗵 𝗛𝗨𝗕||The web of Anushtup Nath</title>
+<link href="ytlogo.jpg" rel="icon" type="image/x-icon"/>
+<style>
+.mobile-menu-btn {
+  display: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+@media (max-width: 992px) {
+  .mobile-menu-btn {
+    display: block;
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .table-card {
+    overflow-x: auto;
+  }
+
+  .data-table {
+    width: 700px;
+  }
+}
+</style><style>
+.close-btn {
+  display: none;
+  font-size: 22px;
+  text-align: right;
+  padding: 20px;
+  cursor: pointer;
+}
+
+@media (max-width: 992px) {
+  .close-btn {
+    display: block;
+  }
+}
+</style></head>
 <!DOCTYPE html>
+
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Dashboard</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <style>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>𝗔𝘆𝘂𝘀𝗵 𝗛𝗨𝗕||The web of Anushtup Nath</title>
+<link rel="icon" type="image/x-icon" href="ytlogo.jpg">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
         :root {
   --primary: #3a0ca3;
   --primary-light: #4361ee;
@@ -814,7 +846,7 @@ body {
   font-size: 18px;
 }
     </style>
-    <style>
+<style>
         a:link {
           color: white;
           background-color: transparent;
@@ -841,266 +873,233 @@ body {
                
     
         </style>
-        
-  <body>
-    
-    <div class="container">
-      <!-- Sidebar -->
-      <div class="sidebar">
-        <div class="logo">
-          <h1>Projects<span>Panel</span></h1>
-        </div>
-        <div class="nav-menu">
-          <div class="menu-heading">Main</div>
-          <div class="nav-item active">
-            <i class="fas fa-chart-pie"></i>
-            <span>Dashboard</span>
-          </div>
-          
-          <div class="nav-item">
-            <i class="fas fa-users"></i>
-            <a href="index.html"><span>Return to HUB</span></a>
-          </div>
-        
-         
-          
-
-          <div class="menu-heading">Only For Admin</div>
-          <div class="nav-item">
-            <i class="fas fa-cog"></i>
-            <span>Settings</span>
-          </div>
-          <div class="nav-item">
-            <i class="fas fa-bell"></i>
-            <span>Notifications</span>
-          </div>
-          <div class="nav-item">
-            <i class="fas fa-shield-alt"></i>
-            <span>Security</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Header -->
-      <div class="header">
-        <div class="search-bar">
-          <i class="fas fa-search"></i>
-          <input type="text" placeholder="Search..." />
-        </div>
-        <div class="header-actions">
-          <div class="notification">
-            <i class="fas fa-bell"></i>
-            <div class="badge">3</div>
-          </div>
-          <div class="notification">
-            <i class="fas fa-envelope"></i>
-            <div class="badge">5</div>
-          </div>
-          <div class="user-profile">
-            <div class="profile-img">AN</div>
-            <div class="user-info">
-              <div class="user-name">Anushtup Nath</div>
-              <div class="user-role">Administrator</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Main Content -->
-      <div class="main-content">
-        <div class="page-title">
-          <div class="title">Projects Dashboard</div>
-          <div class="action-buttons">
-            <button class="btn btn-outline">
-              <i class="fas fa-download"></i>
+<body>
+<div class="container">
+<!-- Sidebar -->
+<div class="sidebar"><div class="close-btn" onclick="toggleSidebar()"><i class="fas fa-times"></i></div>
+<div class="logo">
+<h1>Projects<span>Panel</span></h1>
+</div>
+<div class="nav-menu">
+<div class="menu-heading">Main</div>
+<div class="nav-item active">
+<i class="fas fa-chart-pie"></i>
+<span>Dashboard</span>
+</div>
+<div class="nav-item">
+<i class="fas fa-users"></i>
+<a href="index.html"><span>Return to HUB</span></a>
+</div>
+<div class="menu-heading">Only For Admin</div>
+<div class="nav-item">
+<i class="fas fa-cog"></i>
+<span>Settings</span>
+</div>
+<div class="nav-item">
+<i class="fas fa-bell"></i>
+<span>Notifications</span>
+</div>
+<div class="nav-item">
+<i class="fas fa-shield-alt"></i>
+<span>Security</span>
+</div>
+</div>
+</div>
+<!-- Header -->
+<div class="header"><div class="mobile-menu-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></div>
+<div class="search-bar">
+<i class="fas fa-search"></i>
+<input placeholder="Search..." type="text"/>
+</div>
+<div class="header-actions">
+<div class="notification">
+<i class="fas fa-bell"></i>
+<div class="badge">3</div>
+</div>
+<div class="notification">
+<i class="fas fa-envelope"></i>
+<div class="badge">5</div>
+</div>
+<div class="user-profile">
+<div class="profile-img">AN</div>
+<div class="user-info">
+<div class="user-name">Anushtup Nath</div>
+<div class="user-role">Administrator</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content -->
+<div class="main-content">
+<div class="page-title">
+<div class="title">Projects Dashboard</div>
+<div class="action-buttons">
+<button class="btn btn-outline">
+<i class="fas fa-download"></i>
               Export
             </button>
-            <button class="btn btn-primary">
-              <i class="fas fa-plus"></i>
+<button class="btn btn-primary">
+<i class="fas fa-plus"></i>
               Add New
             </button>
-          </div>
-        </div>
-
-        <!-- Stats Cards -->
-        <div class="stats-cards">
-          <div class="stat-card">
-            <div class="card-header">
-              <div>
-                <div class="card-value">1,504</div>
-                <div class="card-label">Total Users</div>
-              </div>
-              <div class="card-icon purple">
-                <i class="fas fa-users"></i>
-              </div>
-            </div>
-            <div class="card-change positive">
-              <i class="fas fa-arrow-up"></i>
-              <span>12.5% from last month</span>
-            </div>
-          </div>
-
-          
-          
-
-          <div class="stat-card">
-            <div class="card-header">
-              <div>
-                <div class="card-value">24</div>
-                <div class="card-label">Total Projects</div>
-              </div>
-              <div class="card-icon green">
-                <i class="fas fa-shopping-cart"></i>
-              </div>
-            </div>
-            <div class="card-change negative">
-              <i class="fas fa-arrow-down"></i>
-              <span>3.1% from last month</span>
-            </div>
-          </div>
-
-          <div class="stat-card">
-            <div class="card-header">
-              <div>
-                <div class="card-value">85%</div>
-                <div class="card-label">Conversion Rate</div>
-              </div>
-              <div class="card-icon orange">
-                <i class="fas fa-chart-line"></i>
-              </div>
-            </div>
-            <div class="card-change positive">
-              <i class="fas fa-arrow-up"></i>
-              <span>4.6% from last month</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Recent Orders -->
-        <div class="table-card">
-          <div class="card-title">
-            <h3><i class="fas fa-shopping-bag"></i> Recent Projects</h3>
-            
-          </div>
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Project ID</th>
-                <th>Made By</th>
-                <th>Date</th>
-                
-                <th>Status</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Classification of Computer Language</td>
-                <td>Anushtup Nath</td>
-                <td>15 Mar 2025</td>
-                
-                <td>
-                  <span class="status active"
-                    ><i class="fas fa-check-circle"></i> Completed</span
-                  >
-                </td>
-                <td>
-                    <a href="CLASIFICATION OF COMPUTER LANGUAGE.html"><button class="btn btn-outline btn-sm"> 
-                    <i class="fas fa-eye"></i> View
+</div>
+</div>
+<!-- Stats Cards -->
+<div class="stats-cards">
+<div class="stat-card">
+<div class="card-header">
+<div>
+<div class="card-value">1,504</div>
+<div class="card-label">Total Users</div>
+</div>
+<div class="card-icon purple">
+<i class="fas fa-users"></i>
+</div>
+</div>
+<div class="card-change positive">
+<i class="fas fa-arrow-up"></i>
+<span>12.5% from last month</span>
+</div>
+</div>
+<div class="stat-card">
+<div class="card-header">
+<div>
+<div class="card-value">24</div>
+<div class="card-label">Total Projects</div>
+</div>
+<div class="card-icon green">
+<i class="fas fa-shopping-cart"></i>
+</div>
+</div>
+<div class="card-change negative">
+<i class="fas fa-arrow-down"></i>
+<span>3.1% from last month</span>
+</div>
+</div>
+<div class="stat-card">
+<div class="card-header">
+<div>
+<div class="card-value">85%</div>
+<div class="card-label">Conversion Rate</div>
+</div>
+<div class="card-icon orange">
+<i class="fas fa-chart-line"></i>
+</div>
+</div>
+<div class="card-change positive">
+<i class="fas fa-arrow-up"></i>
+<span>4.6% from last month</span>
+</div>
+</div>
+</div>
+<!-- Recent Orders -->
+<div class="table-card">
+<div class="card-title">
+<h3><i class="fas fa-shopping-bag"></i> Recent Projects</h3>
+</div>
+<table class="data-table">
+<thead>
+<tr>
+<th>Project ID</th>
+<th>Made By</th>
+<th>Date</th>
+<th>Status</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Classification of Computer Language</td>
+<td>Anushtup Nath</td>
+<td>15 Mar 2025</td>
+<td>
+<span class="status active"><i class="fas fa-check-circle"></i> Completed</span>
+</td>
+<td>
+<a href="CLASIFICATION OF COMPUTER LANGUAGE.html"><button class="btn btn-outline btn-sm">
+<i class="fas fa-eye"></i> View
                   </button>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>Christmas 2024</td>
-                <td>Anushtup Nath</td>
-                <td>14 Mar 2025</td>
-                
-                <td>
-                  <span class="status active"
-                    ><i class="fas fa-check-circle"></i> Completed</span
-                    >
-                  
-                </td>
-                <td>
-                    <a href="Christmas 2024.html"><button class="btn btn-outline btn-sm">
-                    <i class="fas fa-eye"></i> View
+</a>
+</td>
+</tr>
+<tr>
+<td>Christmas 2024</td>
+<td>Anushtup Nath</td>
+<td>14 Mar 2025</td>
+<td>
+<span class="status active"><i class="fas fa-check-circle"></i> Completed</span>
+</td>
+<td>
+<a href="Christmas 2024.html"><button class="btn btn-outline btn-sm">
+<i class="fas fa-eye"></i> View
                   </button>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>Dinosaur Game</td>
-                <td>Anushtup Nath</td>
-                <td>13 Mar 2025</td>
-                
-                <td>
-                  <span class="status active"
-                    ><i class="fas fa-check-circle"></i> Completed</span
-                  >
-                </td>
-                <td>
-                    <a href="DINOSAUR GAME.html"><button class="btn btn-outline btn-sm">
-                    <i class="fas fa-eye"></i> View
+</a>
+</td>
+</tr>
+<tr>
+<td>Dinosaur Game</td>
+<td>Anushtup Nath</td>
+<td>13 Mar 2025</td>
+<td>
+<span class="status active"><i class="fas fa-check-circle"></i> Completed</span>
+</td>
+<td>
+<a href="DINOSAUR GAME.html"><button class="btn btn-outline btn-sm">
+<i class="fas fa-eye"></i> View
                   </button>
-                    </a>
-                </td>
-              </tr>
-              <tr>
-                <td>Game</td>
-                <td>Anushtup Nath</td>
-                <td>12 Mar 2025</td>
-                
-                <td>
-                  <span class="status active"
-                    ><i class="fas fa-check-circle"></i> Completed</span
-                  >
-                </td>
-                <td>
-                    <a href="Game.html"><button class="btn btn-outline btn-sm">
-                    <i class="fas fa-eye"></i> View
+</a>
+</td>
+</tr>
+<tr>
+<td>Game</td>
+<td>Anushtup Nath</td>
+<td>12 Mar 2025</td>
+<td>
+<span class="status active"><i class="fas fa-check-circle"></i> Completed</span>
+</td>
+<td>
+<a href="Game.html"><button class="btn btn-outline btn-sm">
+<i class="fas fa-eye"></i> View
                   </button>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>Calculator</td>
-                <td>Anushtup Nath</td>
-                <td>11 Mar 2025</td>
-                
-                <td>
-                  <span class="status active"
-                    ><i class="fas fa-check-circle"></i> Completed</span
-                  >
-                </td>
-                <td>
-                    <a href="https://scratch.mit.edu/projects/19901239/fullscreen/"><button class="btn btn-outline btn-sm">
-                    <i class="fas fa-eye"></i> View
+</a>
+</td>
+</tr>
+<tr>
+<td>Calculator</td>
+<td>Anushtup Nath</td>
+<td>11 Mar 2025</td>
+<td>
+<span class="status active"><i class="fas fa-check-circle"></i> Completed</span>
+</td>
+<td>
+<a href="https://scratch.mit.edu/projects/19901239/fullscreen/"><button class="btn btn-outline btn-sm">
+<i class="fas fa-eye"></i> View
                   </button>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>2D Minecraft</td>
-                <td>Anushtup Nath</td>
-                <td>09 Mar 2025</td>
-                
-                <td>
-                  <span class="status active"
-                    ><i class="fas fa-check-circle"></i> Completed</span
-                  >
-                </td>
-                <td>
-                  <a href="https://scratch.mit.edu/projects/10128407/fullscreen/"><button class="btn btn-outline btn-sm">
-                    <i class="fas fa-eye"></i> View
+</a>
+</td>
+</tr>
+<tr>
+<td>2D Minecraft</td>
+<td>Anushtup Nath</td>
+<td>09 Mar 2025</td>
+<td>
+<span class="status active"><i class="fas fa-check-circle"></i> Completed</span>
+</td>
+<td>
+<a href="https://scratch.mit.edu/projects/10128407/fullscreen/"><button class="btn btn-outline btn-sm">
+<i class="fas fa-eye"></i> View
                   </button>
-                  </a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </body>
-</html>
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<script>
+function toggleSidebar() {
+  document.querySelector('.sidebar').classList.toggle('active');
+}
+</script></body>
+</link></head></html></html>
