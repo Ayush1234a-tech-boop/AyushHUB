@@ -1,124 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>𝗔𝘆𝘂𝘀𝗵 𝗛𝗨𝗕||The web of Anushtup Nath</title>
-        
-        <link rel="icon" type="image/x-icon" href="ytlogo.jpg">
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𝗔𝘆𝘂𝘀𝗵 𝗛𝗨𝗕 || The web of Anushtup Nath</title>
+    <link rel="icon" type="image/x-icon" href="ytlogo.jpg">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
 
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
 
-html,
-body {
-    height: 100%;
-    width: 100%;
-}
+        html, body {
+            height: 100%;
+            width: 100%;
+            font-family: 'Roboto', sans-serif;
+        }
 
-body {
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('./Leonardo_Phoenix_A_visually_captivating_hightech_background_fo_3.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+            padding: 20px;
+        }
 
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    background-image: url('./Leonardo_Phoenix_A_visually_captivating_hightech_background_fo_3.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
-    overflow: hidden;
-}
+        .container {
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            padding: 30px 20px;
+            max-width: 500px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
 
-.container {
-    padding: 40px;
-    position: absolute;
-    left: 20%;
-    background-color: rgba(0, 0, 0, 0.6);
-    border-radius: 10px;
-    width: 40%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
+        h1 {
+            font-size: 2em;
+            color: white;
+            margin-bottom: 15px;
+        }
 
-h1 {
-    font-size: 35px;
-    font-family: "Roboto";
+        p {
+            color: orange;
+            font-size: 1em;
+            margin: 10px 0;
+        }
 
-}
+        .btn {
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+            cursor: pointer;
+        }
 
-p {
-    color: orange;
-    font-size: 18px;
-}
+        .btn:hover {
+            background-color: #45a049;
+        }
 
-.btn {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 1.2em;
-    cursor: pointer;
-    color: #fff;
-    background-color: #4CAF50;
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.2s;
-}
+        .listening {
+            animation: pulse 1s infinite;
+            background-color: #FF6347;
+        }
 
-.btn:hover {
-    background-color: #45a049;
-}
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
 
-.listening {
-    animation: pulse 1s infinite;
-    background-color: #FF6347;
-}
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
+        /* Mobile responsiveness */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+                width: 90%;
+            }
 
-    50% {
-        transform: scale(1.1);
-    }
+            h1 {
+                font-size: 1.6em;
+            }
 
-    100% {
-        transform: scale(1);
-    }
-}
-        </style>
+            .btn {
+                font-size: 1em;
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
 
-        
-        
+    <div class="container">
+        <h1>Your AI Assistant</h1>
+        <p>Press the button and say a command (e.g., "Open YouTube")</p>
+        <button id="listen-btn" class="btn">🎙️ Start Listening</button>
+        <button class="btn"><a href="chatbot.html">Talk with Me</a></button>
+        <p><a href="index.html"><button class="btn">Return To Hub</button></a></p>
+    </div>
 
-
-    </head>
-    <body>
-      
-        
-        <div class="container">
-
-            <h1>Your AI Assistant</h1>
-            <p>Press the button and say a command (e.g., "Open YouTube")</p>
-            <button id="listen-btn" class="btn">🎙️ Start
-                Listening</button>
-                <button id="listen-btn" class="btn"><a href="chatbot.html">Talk with Me</a>
-                    </button>
-                    <p>&nbsp;</p>
-                   <p><a href="index.html"><button><font size="5"><b>Return To Hub</b></font></button></a></p> 
-        </div>
-
-     <script src="ai.js"></script>
-        
-    
-    </body>
+    <script src="ai.js"></script>
+</body>
 </html>
