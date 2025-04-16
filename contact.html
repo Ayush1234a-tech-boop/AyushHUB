@@ -358,13 +358,13 @@
         <iframe src="https://maps.google.com/maps?q=Kolkata&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
       </div>
 
-      <form id="contactForm">
+      <form action="https://formsubmit.co/nathanushtup@gmail.com" method="POST" id="contactForm">
         <div class="row">
-          <input type="text" placeholder="Your Name" required />
-          <input type="email" placeholder="Your Email" required />
+          <input type="text" name="Name" placeholder="Your Name" required />
+          <input type="email" name="Email" placeholder="Your Email" required />
         </div>
-        <input type="text" placeholder="Subject" required />
-        <textarea placeholder="Your Message" required></textarea>
+        <input type="text" name="Subject" placeholder="Subject" required />
+        <textarea name="Mesaage" placeholder="Your Message" required></textarea>
         <button type="submit">Send Message ✉️</button>
       </form>
     </div>
