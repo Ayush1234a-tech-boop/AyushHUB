@@ -1,119 +1,329 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>𝗔𝘆𝘂𝘀𝗵 𝗛𝗨𝗕||The web of Anushtup Nath</title>
-   <link rel="icon" type="image/x-icon" href="ytlogo.jpg">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Ayush HUB</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>𝗔𝘆𝘂𝘀𝗵 𝗛𝗨𝗕||The web of Anushtup Nath</title>
+  <link rel="icon" type="image/x-icon" href="ytlogo.jpg">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      background-color: #f8fafc;
+      color: #1f2937;
+      transition: all 0.3s ease;
+    }
+
+    .toggle-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #f1f5f9;
+      border: none;
+      border-radius: 50%;
+      padding: 12px 14px;
+      font-size: 18px;
+      cursor: pointer;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .toggle-btn:hover {
+      background: #e2e8f0;
+    }
+
+    .sidebar {
+      width: 240px;
+      background: linear-gradient(180deg, #111827, #1f2937);
+      color: white;
+      min-height: 100vh;
+      padding: 30px 20px;
+      position: sticky;
+      top: 0;
+    }
+
+    .sidebar .logo {
+      font-size: 28px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 40px;
+      letter-spacing: 1px;
+    }
+
+    .sidebar nav a {
+      display: block;
+      padding: 14px 20px;
+      margin-bottom: 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #d1d5db;
+      transition: 0.3s;
+    }
+
+    .sidebar nav a:hover,
+    .sidebar nav a.active {
+      background: #2563eb;
+      color: white;
+      font-weight: 600;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 50px;
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 30px;
+      color: #4b5563;
+    }
+
+    .contact-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .info div {
+      margin-bottom: 20px;
+      font-size: 15px;
+      line-height: 1.6;
+      background: #f1f5f9;
+      padding: 16px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+      transition: background 0.3s;
+    }
+
+    .info div:hover {
+      background: #e2e8f0;
+    }
+
+    .info div strong {
+      display: block;
+      color: #111827;
+      font-weight: 600;
+      margin-bottom: 6px;
+      font-size: 16px;
+    }
+
+    .info iframe {
+      width: 100%;
+      height: 300px;
+      border-radius: 16px;
+      border: none;
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.1);
+      filter: grayscale(40%) contrast(110%);
+      transition: transform 0.3s;
+    }
+
+    .info iframe:hover {
+      transform: scale(1.01);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    form .row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 16px 18px;
+      border: 1px solid #d1d5db;
+      border-radius: 14px;
+      font-size: 15px;
+      transition: border 0.3s, box-shadow 0.3s, transform 0.2s;
+      background-color: #f9fafb;
+    }
+
+    form input:focus,
+    form textarea:focus {
+      border-color: #2563eb;
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.25);
+      transform: scale(1.01);
+    }
+
+    form textarea {
+      min-height: 160px;
+      resize: vertical;
+    }
+
+    form button {
+      background-color: #2563eb;
+      color: white;
+      padding: 16px;
+      border: none;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    form button:hover {
+      background-color: #1e40af;
+      transform: scale(1.03);
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        display: none;
+      }
+
+      .main-content {
+        padding: 20px;
+      }
+    }
+
+    body.dark {
+      background-color: #0f172a;
+      color: #e2e8f0;
+    }
+
+    body.dark .main-content {
+      background-color: transparent;
+    }
+
+    body.dark .sidebar {
+      background: linear-gradient(180deg, #1e293b, #0f172a);
+    }
+
+    body.dark .sidebar nav a {
+      color: #cbd5e1;
+    }
+
+    body.dark .sidebar nav a:hover,
+    body.dark .sidebar nav a.active {
+      background: #334155;
+      color: #fff;
+    }
+
+    body.dark .contact-container {
+      background-color: #1e293b;
+      color: #e2e8f0;
+    }
+
+    body.dark input,
+    body.dark textarea {
+      background: #334155;
+      border-color: #475569;
+      color: #e2e8f0;
+    }
+
+    body.dark input::placeholder,
+    body.dark textarea::placeholder {
+      color: #cbd5e1;
+    }
+
+    body.dark form button {
+      background-color: #38bdf8;
+    }
+
+    body.dark form button:hover {
+      background-color: #0ea5e9;
+    }
+
+    body.dark .info div {
+      background: #334155;
+    }
+
+    body.dark .info div:hover {
+      background: #475569;
+    }
+  </style>
 </head>
 <body>
-	<style>
-	.contact-section {
-  width: 100%;
-  max-width: 40rem;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 3rem 1rem;
-}
+  <button id="darkToggle" class="toggle-btn" title="Toggle Dark Mode">🌙</button>
 
-.contact-intro > * + * {
-  margin-top: 1rem;
-}
+  <div class="sidebar">
+    <div class="logo">Ayush HUB</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="./iPortfolio-1.0.0/index.html">About</a>
+      
+      <a href="https://in.docworkspace.com/d/sIBTPh76nApL85L8G">Resume</a>
+      <a href="map.html" class="active">Contact</a>
+    </nav>
+  </div>
 
-.contact-title {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
-  font-weight: 700;
-}
+  <div class="main-content">
+    <h1>Get in Touch</h1>
+    <p>Feel free to contact the Ayush HUB community.</p>
 
-.contact-description {
-  color: rgb(107 114 128);
-}
+    <div class="contact-container">
+      <div class="info">
+        <div>
+          <strong>Address</strong>
+          418/1, Sarodamani Park, Pirpukur Road, Bansdroni, Kolkata-700070
+        </div>
+        <div>
+          <strong>Call Us</strong>
+          +91 9903152406
+        </div>
+        <div>
+          <strong>Email Us</strong>
+          nathanushutup@gmail.com
+        </div>
+        <iframe src="https://maps.google.com/maps?q=Kolkata&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+      </div>
 
-.form-group-container {
-  display: grid;
-  gap: 1rem;
-  margin-top: 2rem;
-}
+      <form id="contactForm">
+        <div class="row">
+          <input type="text" placeholder="Your Name" required />
+          <input type="email" placeholder="Your Email" required />
+        </div>
+        <input type="text" placeholder="Subject" required />
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message ✉️</button>
+      </form>
+    </div>
+  </div>
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      alert("Message sent successfully!");
+      this.reset();
+    });
 
-.form-label {
-  margin-bottom: 0.5rem;
-}
-
-.form-input,
-.form-textarea {
-  padding: 0.5rem;
-  border: 1px solid #e5e7eb;
-  display: flex;
-  height: 2.5rem;
-  width: 100%;
-  border-radius: 0.375rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-}
-
-.form-input::placeholder,
-.form-textarea:focus-visible {
-  color: #6b7280;
-}
-
-.form-input:focus-visible,
-.form-textarea:focus-visible {
-  outline: 2px solid #2563eb;
-  outline-offset: 2px;
-}
-
-.form-textarea {
-  min-height: 120px;
-}
-
-.form-submit {
-  width: 100%;
-  margin-top: 1.2rem;
-  background-color: #3124ca;
-  color: #fff;
-  padding: 13px 5px;
-  border-radius: 0.375rem;
-}
-
-</style>
-
- <section class="contact-section">
-	<div class="contact-intro">
-	  <h2 class="contact-title">Get in Touch with Ayush HUB</h2>
-	  <p class="contact-description">
-		Fill out the form below and we'll get back to you as soon as possible.
-		
-	  </p>
-	</div>
-  
-	<form action="https://formsubmit.co/nathanushtup@gmail.com" method="POST">
-  
-	  
-  
-	  <div class="form-group-container">
-		<div class="form-group">
-		  <label for="name" class="form-label">Name</label>
-		  <input id="name" name="name" class="form-input" placeholder="Your name" type="text" required/>
-		</div>
-		<div class="form-group">
-		  <label for="email" class="form-label">Email</label>
-		  <input id="email" name="email" class="form-input" placeholder="Your email" type="email" required/>
-		</div>
-	
-		<div class="form-group">
-		  <label for="message" class="form-label">Message</label>
-		  <textarea class="form-textarea" id="message" name="message" placeholder="Your message" required></textarea>
-		</div>
-	  </div>
-	  <button class="form-submit" type="submit">Send Message</button>
-	</form>
-  
-  </section>
+    document.getElementById("darkToggle").addEventListener("click", function () {
+      document.body.classList.toggle("dark");
+      this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+    });
+  </script>
 </body>
 </html>
