@@ -24,11 +24,14 @@
     .toggle-btn {
       position: fixed;
       top: 20px;
-      right: 20px;
       background: #f1f5f9;
       border: none;
       border-radius: 50%;
-      padding: 12px 14px;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       font-size: 18px;
       cursor: pointer;
       z-index: 1000;
@@ -38,6 +41,47 @@
 
     .toggle-btn:hover {
       background: #e2e8f0;
+    }
+
+    #darkToggle {
+      right: 20px;
+    }
+
+    /* Hamburger */
+    #menuToggle {
+      right: 70px;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+    }
+
+    #menuToggle span {
+      display: block;
+      width: 22px;
+      height: 3px;
+      background: #1f2937;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    #menuToggle.active span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    #menuToggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    #menuToggle.active span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    @media (max-width: 768px) {
+      #menuToggle {
+        display: flex;
+      }
     }
 
     .sidebar {
@@ -245,7 +289,7 @@
       }
 
       .sidebar.mobile .close-btn {
-        display: none;
+        display: block;
       }
 
       .main-content {
@@ -312,7 +356,11 @@
 </head>
 <body>
   <button id="darkToggle" class="toggle-btn" title="Toggle Dark Mode">🌙</button>
-  <button id="menuToggle" class="toggle-btn" title="Toggle Menu" style="right: 70px;">☰</button>
+  <button id="menuToggle" class="toggle-btn" title="Toggle Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
@@ -333,7 +381,7 @@
       <a href="index.html">Home</a>
       <a href="./iPortfolio-1.0.0/index.html">About</a>
       <a href="https://in.docworkspace.com/d/sIBTPh76nApL85L8G">Resume</a>
-      <a href="contact.html" class="active">Contact</a>
+      <a href="map.html" class="active">Contact</a>
     </nav>
   </div>
 
@@ -358,43 +406,46 @@
         <iframe src="https://maps.google.com/maps?q=Kolkata&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
       </div>
 
-      <form action="https://formsubmit.co/nathanushtup@gmail.com" method="POST" id="contactForm">
+      <form action="https://formsubmit.co/nathanushutup@gmail.com" method="POST" id="contactForm">
         <div class="row">
           <input type="text" name="Name" placeholder="Your Name" required />
           <input type="email" name="Email" placeholder="Your Email" required />
         </div>
         <input type="text" name="Subject" placeholder="Subject" required />
-        <textarea name="Mesaage" placeholder="Your Message" required></textarea>
+        <textarea name="Message" placeholder="Your Message" required></textarea>
         <button type="submit">Send Message ✉️</button>
       </form>
     </div>
   </div>
 
   <script>
-    document.getElementById("contactForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-      alert("Message sent successfully!");
-      this.reset();
-    });
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileSidebar = document.getElementById("mobileSidebar");
+    const sidebarOverlay = document.getElementById("sidebarOverlay");
+
+    
 
     document.getElementById("darkToggle").addEventListener("click", function () {
       document.body.classList.toggle("dark");
       this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
     });
 
-    document.getElementById("menuToggle").addEventListener("click", function () {
-      document.getElementById("mobileSidebar").classList.add("active");
-      document.getElementById("sidebarOverlay").classList.add("active");
+    menuToggle.addEventListener("click", function () {
+      mobileSidebar.classList.add("active");
+      sidebarOverlay.classList.add("active");
+      this.classList.add("active");
     });
 
     document.getElementById("closeSidebar").addEventListener("click", function () {
-      document.getElementById("mobileSidebar").classList.remove("active");
-      document.getElementById("sidebarOverlay").classList.remove("active");
+      mobileSidebar.classList.remove("active");
+      sidebarOverlay.classList.remove("active");
+      menuToggle.classList.remove("active");
     });
 
-    document.getElementById("sidebarOverlay").addEventListener("click", function () {
-      document.getElementById("mobileSidebar").classList.remove("active");
+    sidebarOverlay.addEventListener("click", function () {
+      mobileSidebar.classList.remove("active");
       this.classList.remove("active");
+      menuToggle.classList.remove("active");
     });
   </script>
 </body>
