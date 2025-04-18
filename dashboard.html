@@ -873,6 +873,24 @@ body {
                
     
         </style>
+        <style>
+          .table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+  .data-table {
+    min-width: 600px;
+  }
+
+  .table-card {
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+        </style>
 <body>
 <div class="container">
 <!-- Sidebar -->
@@ -994,19 +1012,20 @@ body {
 </div>
 <!-- Recent Orders -->
 <div class="table-card">
-<div class="card-title">
-<h3><i class="fas fa-shopping-bag"></i> Recent Projects</h3>
-</div>
-<table class="data-table">
-<thead>
-<tr>
-<th>Project ID</th>
-<th>Made By</th>
-<th>Date</th>
-<th>Status</th>
-<th>Actions</th>
-</tr>
-</thead>
+        <div class="card-title">
+          <h3><i class="fas fa-shopping-bag"></i> Recent Projects</h3>
+        </div>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Project ID</th>
+                <th>Made By</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
 <tbody>
 <tr>
 <td>Classification of Computer Language</td>
