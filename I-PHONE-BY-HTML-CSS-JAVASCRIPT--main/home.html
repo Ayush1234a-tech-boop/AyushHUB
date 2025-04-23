@@ -6,6 +6,134 @@
     <title>𝗔𝘆𝘂𝘀𝗵 𝗛𝗨𝗕||The web of Anushtup Nath</title>
     <link rel="icon" type="image/x-icon" href="ytlogo.jpg">
     <link href="style.css" rel="stylesheet" type="text/css">
+	<style>
+		* {
+		  box-sizing: border-box;
+		}
+	  
+		body {
+		  margin: 0;
+		  font-family: sans-serif;
+		  display: flex;
+		  flex-direction: column;
+		  align-items: center;
+		}
+	  
+		.iphone.home {
+		  background-image: url("Images/Backgrounds/homescreen.jpeg");
+		  background-size: cover;
+		  background-position: center;
+		  width: 100%;
+		  max-width: 430px;
+		  height: 100vh;
+		  border-radius: 40px;
+		  overflow: hidden;
+		  display: flex;
+		  flex-direction: column;
+		  justify-content: space-between;
+		}
+	  
+		.iphone .inner {
+		  flex: 1;
+		  display: flex;
+		  flex-direction: column;
+		  padding: 16px;
+		}
+	  
+		.iphone .inner .top {
+		  display: flex;
+		  justify-content: space-between;
+		  align-items: center;
+		}
+	  
+		.iphone .inner .top .left .time {
+		  font-size: 1.2rem;
+		}
+	  
+		.iphone .inner .content {
+		  flex-grow: 1;
+		  display: flex;
+		  flex-direction: column;
+		  justify-content: space-between;
+		}
+	  
+		.icons, .dock {
+		  display: flex;
+		  flex-wrap: wrap;
+		  justify-content: center;
+		  gap: 16px;
+		}
+	  
+		.appContainer {
+		  display: flex;
+		  flex-direction: column;
+		  align-items: center;
+		  width: 22%;
+		  min-width: 60px;
+		}
+	  
+		.appContainer img.app {
+		  width: 100%;
+		  max-width: 70px;
+		  height: auto;
+		  border-radius: 15px;
+		  transition: filter 0.2s;
+		}
+	  
+		.appContainer img.app:active {
+		  filter: brightness(0.7);
+		}
+	  
+		.dock {
+		  background-color: #c8c5c569;
+		  padding: 10px;
+		  border-radius: 25px;
+		  width: 100%;
+		  max-width: 96%;
+		  height: auto;
+		}
+	  
+		.dots {
+		  display: flex;
+		  justify-content: center;
+		  gap: 8px;
+		  margin: 20px 0;
+		}
+	  
+		.dot {
+		  width: 8px;
+		  height: 8px;
+		  border-radius: 50%;
+		  background-color: #c8c5c569;
+		}
+	  
+		.dot.active {
+		  background-color: #fff;
+		}
+	  
+		@media (max-width: 480px) {
+		  .iphone.home {
+			border-radius: 0;
+			height: 100dvh;
+		  }
+	  
+		  .appContainer {
+			width: 25%;
+		  }
+	  
+		  .iphone .inner {
+			padding: 10px;
+		  }
+		}
+	  
+		@media (min-width: 768px) {
+		  .appContainer {
+			width: 18%;
+		  }
+		}
+	  
+	  </style>
+	  
   </head>
   <body>
 		<div>
