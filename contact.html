@@ -6,19 +6,16 @@
   <title>Contact | Ayush HUB</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="ytlogo.jpg">
-   <style> /* Default cursor */
-        body {
-            cursor: url('cursor.png') 0 0, auto
-           
-        }
-    
-       
-    /* Show pointer cursor on clickable elements */
-    a, button, input[type="submit"], [role="button"], .clickable {
-        cursor: url('pointer.png'), pointer;
-    }
-</style>
   <style>
+    /* Default cursor */
+    body {
+      cursor: url('cursor.png') 0 0, auto;
+    }
+
+    a, button, input[type="submit"], [role="button"], .clickable {
+      cursor: url('pointer.png'), pointer;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -59,7 +56,6 @@
       right: 20px;
     }
 
-    /* Hamburger */
     #menuToggle {
       right: 70px;
       display: none;
@@ -146,18 +142,6 @@
       background: #2563eb;
       color: white;
       font-weight: 600;
-    }
-
-    .sidebar .close-btn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: none;
-      color: white;
-      font-size: 24px;
-      border: none;
-      cursor: pointer;
-      display: none;
     }
 
     .sidebar-overlay {
@@ -300,10 +284,6 @@
         display: none;
       }
 
-      .sidebar.mobile .close-btn {
-        display: block;
-      }
-
       .main-content {
         padding: 20px;
       }
@@ -382,12 +362,11 @@
       <a href="index.html">Home</a>
       <a href="./iPortfolio-1.0.0/index.html">About</a>
       <a href="https://in.docs.wps.com/l/sIBTPh76nApL85L8G?v=v2">Resume</a>
-      <a href="map.html" class="active">Contact</a>
+      <a href="contact.html" class="active">Contact</a>
     </nav>
   </div>
 
   <div class="sidebar mobile" id="mobileSidebar">
-    <button class="close-btn" id="closeSidebar">&times;</button>
     <div class="logo">Ayush HUB</div>
     <nav>
       <a href="index.html">Home</a>
@@ -435,23 +414,16 @@
     const mobileSidebar = document.getElementById("mobileSidebar");
     const sidebarOverlay = document.getElementById("sidebarOverlay");
 
-    
-
     document.getElementById("darkToggle").addEventListener("click", function () {
       document.body.classList.toggle("dark");
       this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
     });
 
     menuToggle.addEventListener("click", function () {
-      mobileSidebar.classList.add("active");
-      sidebarOverlay.classList.add("active");
-      this.classList.add("active");
-    });
-
-    document.getElementById("closeSidebar").addEventListener("click", function () {
-      mobileSidebar.classList.remove("active");
-      sidebarOverlay.classList.remove("active");
-      menuToggle.classList.remove("active");
+      const isActive = mobileSidebar.classList.contains("active");
+      mobileSidebar.classList.toggle("active");
+      sidebarOverlay.classList.toggle("active");
+      this.classList.toggle("active");
     });
 
     sidebarOverlay.addEventListener("click", function () {
