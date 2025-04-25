@@ -1,86 +1,184 @@
 <!DOCTYPE html>
- <html>
- <head>
-    <title>Real-Time Editor</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Real-Time Code Editor</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
 
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body{
-    height: 100vh;
-    display: flex;
-}
-.container{
-    background: #E7E7E7;
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    height: 100vh;
-    margin: 3px;
+    body {
+      font-family: 'Fira Code', monospace;
+      background-color: #0e0e0e;
+      color: #f8f8f2;
+      height: 100vh;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      overflow: hidden;
+    }
 
-}
-.container textarea {
-    background-color:  #121212;
-    border:1px solid #0dddf0;
-    resize: none;
-    width: 100%;
-    height: 33.333%;
-    font-size: 1.4rem;
-    padding: 10px;
-    resize: vertical;
-    overflow-y: scroll;
-    color:white;
-}
-.container textarea:focus {
-    outline: none;
-    color:white;
-}
-.iframe-container{
-    background: white;
-    width: 50%;
-    height: 100vh;
-    margin: 3px;
-}
-#viewer{
-    width: 100%;
-    height: 100%;
-}
-.split {
-  width:100%;
-  height:100%;
-}
-.gutter {
-  cursor: e-resize;
-  height: 100%;
-  background: grey;
-}
-.gutter.gutter-horizontal {
-    cursor: ew-resize;
-}
+    .container {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+      min-width: 300px;
+      background: #1e1e1e;
+      padding: 10px;
+      gap: 10px;
+    }
 
+    textarea {
+      flex: 1;
+      width: 100%;
+      background-color: #2e2e2e;
+      border: 1px solid #444;
+      border-radius: 8px;
+      font-size: 1rem;
+      padding: 12px;
+      resize: vertical;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      transition: border 0.3s, box-shadow 0.3s;
+    }
 
-    </style>
-    <script defer type="text/javascript" src="editor.js"></script>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/split.js/1.0.0/split.min.js" integrity="sha512-tTsZnBXEzNdEaqUO9Ok8fUofS73xieiBa54pD/sxOSvayIgItM9MmEM0CnUjA13LDnJT22sfwmjf20+Bo2174g==" crossorigin="anonymous"></script>
- </head>
- <body>
-    <div class="container split">
-        <!-- Text area for Html Code  -->
-        <textarea id="htmlCode"  placeholder="Type HTML code here" spellcheck="false" oninput="update(0)" onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}if(event.keyCode==8){update(1);}"></textarea>
-        <!-- Text area for Css Code  -->
-        <textarea id="cssCode"  placeholder="Type CSS code here" spellcheck="false" oninput="update(0)" onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}if(event.keyCode==8){update(1);}"></textarea>
-        <!-- Text area for Javascript Code  -->
-        <textarea id="javascriptCode" spellcheck="false" placeholder="Type JavaScript code here" oninput="update(0)" onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}if(event.keyCode==8){update(1);}"></textarea>
-    </div>
-    <div class="iframe-container split">
-        <iframe id="viewer"></iframe>
-    </div>
+    textarea:focus {
+      outline: none;
+      border: 1px solid #0dddf0;
+      box-shadow: 0 0 10px #0dddf0;
+    }
 
- </body>
- </html>
+    #htmlCode {
+      color: #b8f3b4; /* Light green */
+    }
+
+    #cssCode {
+      color: #ffe66d; /* Soft yellow */
+    }
+
+    #javascriptCode {
+      color: #ffcc66; /* Pale orange/yellow */
+    }
+
+    .iframe-container {
+      width: 50%;
+      min-width: 300px;
+      height: 100vh;
+      background: #ffffff;
+      border-left: 2px solid #0dddf0;
+    }
+
+    #viewer {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .split {
+      height: 100%;
+    }
+
+    .gutter {
+      background-color: #444;
+      cursor: ew-resize;
+      width: 6px;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+
+      .container,
+      .iframe-container {
+        width: 100%;
+        height: 50vh;
+      }
+
+      .gutter {
+        height: 6px;
+        width: 100%;
+        cursor: ns-resize;
+      }
+    }
+  </style>
+
+  <script defer src="editor.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/split.js/1.0.0/split.min.js" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener("keydown", function (e) {
+      const active = document.activeElement;
+      const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
+      const ctrlKey = isMac ? e.metaKey : e.ctrlKey;
+    
+      // Ctrl + S -> Save/Update preview
+      if (ctrlKey && e.key === "s") {
+        e.preventDefault();
+        update(0);
+      }
+    
+      // Ctrl + / -> Toggle comment
+      if (ctrlKey && e.key === "/") {
+        e.preventDefault();
+        toggleComment(active);
+      }
+    
+      // Ctrl + Shift + D -> Duplicate line
+      if (ctrlKey && e.shiftKey && e.key.toLowerCase() === "d") {
+        e.preventDefault();
+        duplicateLine(active);
+      }
+    });
+    
+    function toggleComment(textarea) {
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      const lines = textarea.value.substring(start, end).split('\n');
+      const allCommented = lines.every(line => line.trim().startsWith("//"));
+      const newText = lines.map(line =>
+        allCommented ? line.replace(/^(\s*)\/\/\s?/, '$1') : "// " + line
+      ).join('\n');
+    
+      textarea.setRangeText(newText, start, end, 'end');
+      update(0);
+    }
+    
+    function duplicateLine(textarea) {
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      const value = textarea.value;
+      const lines = value.split('\n');
+      const lineStart = value.lastIndexOf('\n', start - 1) + 1;
+      const lineEnd = value.indexOf('\n', end);
+      const targetEnd = lineEnd === -1 ? value.length : lineEnd;
+    
+      const selectedLines = value.slice(lineStart, targetEnd);
+      textarea.setRangeText(
+        selectedLines + '\n' + selectedLines,
+        lineStart,
+        targetEnd,
+        'end'
+      );
+      update(0);
+    }
+    </script>
+    
+    
+</head>
+<body>
+  <div class="container split">
+    <textarea id="htmlCode" placeholder="Type HTML code here" spellcheck="false" oninput="update(0)" onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}if(event.keyCode==8){update(1);}"></textarea>
+    <textarea id="cssCode" placeholder="Type CSS code here" spellcheck="false" oninput="update(0)" onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}if(event.keyCode==8){update(1);}"></textarea>
+    <textarea id="javascriptCode" placeholder="Type JavaScript code here" spellcheck="false" oninput="update(0)" onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}if(event.keyCode==8){update(1);}"></textarea>
+  </div>
+  <div class="iframe-container split">
+    <iframe id="viewer"></iframe>
+  </div>
+</body>
+</html>
+
