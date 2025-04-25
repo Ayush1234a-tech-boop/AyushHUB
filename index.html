@@ -276,6 +276,92 @@
 <script src="js/jquery.slicknav.js"></script>
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/main.js"></script>
+                            <!-- Enhanced AI Chat with Sound + Animation -->
+<style>
+  #ai-toggle {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background: #0f0f0f;
+    color: #00fff7;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 14px 0 0 14px;
+    cursor: pointer;
+    z-index: 10000;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 0 12px #00fff7;
+    text-shadow: 0 0 4px #00fff7;
+    transition: all 0.3s ease-in-out;
+    animation: pulseGlow 2s infinite ease-in-out;
+  }
+
+  #ai-toggle:hover {
+    background: #1a1a1a;
+    color: #ff00c8;
+    box-shadow: 0 0 14px #ff00c8;
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% {
+      box-shadow: 0 0 12px #00fff7;
+    }
+    50% {
+      box-shadow: 0 0 18px #00fff7;
+    }
+  }
+
+  #ai-frame {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 300px;
+    height: 460px;
+    border: none;
+    display: none;
+    z-index: 9999;
+    box-shadow: 0 0 20px rgba(255, 0, 200, 0.4);
+    border-radius: 16px;
+    overflow: hidden;
+    animation: slideIn 0.4s ease-in-out;
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+</style>
+
+<button id="ai-toggle">💬 Chat Now</button>
+<iframe id="ai-frame" src="https://www.chatbase.co/chatbot-iframe/1w3JkqN6CaV2hYpgmCSGm" title="AI"></iframe>
+<audio id="click-sound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5fefb5b1e2.mp3?filename=interface-click-124467.mp3" preload="auto"></audio>
+
+<script>
+  const toggleAI = document.getElementById('ai-toggle');
+  const aiFrame = document.getElementById('ai-frame');
+  const clickSound = document.getElementById('click-sound');
+
+  toggleAI.addEventListener('click', () => {
+    clickSound.currentTime = 0;
+    clickSound.play();
+    if (aiFrame.style.display === 'none') {
+      aiFrame.style.display = 'block';
+    } else {
+      aiFrame.style.display = 'none';
+    }
+  });
+</script>
+
 
 
 </body>
