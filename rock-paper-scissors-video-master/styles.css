@@ -341,3 +341,139 @@ body {
 .hidden {
   display: none;
 }
+/* All your original CSS remains above... */
+
+/* --- Mobile Responsive Styling --- */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .header {
+    height: 120px;
+    padding: 0.8rem 1rem;
+  }
+
+  .score {
+    width: 100px;
+  }
+
+  .score__title {
+    font-size: 0.9rem;
+  }
+
+  .score__number {
+    font-size: 3rem;
+  }
+
+  .game {
+    height: 25rem;
+    padding-top: 3rem;
+  }
+
+  .choice {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  .choice img {
+    transform: scale(1.2);
+  }
+
+  .rules-btn {
+    padding: 0.5rem 2rem;
+    font-size: 1rem;
+  }
+
+  .results__heading {
+    font-size: 1.3rem;
+    padding: 3rem 0 5rem;
+  }
+
+  .results__text {
+    font-size: 2.5rem;
+  }
+
+  .play-again {
+    padding: 0.5rem 2.5rem;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    height: auto;
+    text-align: center;
+  }
+
+  .score {
+    width: 80px;
+    height: 80px;
+  }
+
+  .score__title {
+    font-size: 0.8rem;
+  }
+
+  .score__number {
+    font-size: 2.5rem;
+  }
+
+  .game {
+    height: auto;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "paper"
+      "scissors"
+      "rock";
+    gap: 2rem;
+    padding-top: 2rem;
+  }
+
+  .choice {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  .choice img {
+    transform: scale(1);
+  }
+
+  .results {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .results.show-winner {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "you-title"
+      "you-picked"
+      "result-winner"
+      "ai-title"
+      "ai-picked";
+  }
+
+  .results__result {
+    transform: scale(1);
+    min-width: 8rem;
+    min-height: 8rem;
+  }
+
+  .results__text {
+    font-size: 2rem;
+  }
+
+  .rules-btn {
+    right: 50%;
+    transform: translateX(50%);
+    bottom: 1rem;
+  }
+
+  .footer {
+    bottom: 1rem;
+  }
+}
