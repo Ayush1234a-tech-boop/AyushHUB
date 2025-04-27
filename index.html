@@ -3,17 +3,20 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Anime Template">
-    <meta name="keywords" content="Anime, unica, creative, html">
+    <meta name="description" content="Ayush HUB - Portfolio of Anushtup Nath featuring projects, plugins, and AI tools">
+    <meta name="keywords" content="Anushtup Nath, Ayush HUB, Web Development, Projects, AI, Plugins">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>𝗔𝘆𝘂𝘀𝗵 𝗛𝗨𝗕||The web of Anushtup Nath</title>
-<link rel="icon" type="image/x-icon" href="ytlogo.jpg">
+    <meta property="og:title" content="Ayush HUB - Portfolio of Anushtup Nath">
+    <meta property="og:description" content="Explore my projects, plugins and AI tools">
+    <meta property="og:image" content="https://yourdomain.com/logo.png">
+    <meta property="og:url" content="https://yourdomain.com">
+    <title>𝗔𝘆𝘂𝘀𝗵 𝗛𝗨𝗕 || The web of Anushtup Nath</title>
+    <link rel="icon" type="image/x-icon" href="ytlogo.jpg">
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -24,18 +27,190 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-     <style> /* Default cursor */
-        body {
-            cursor: url('cursor.png') 0 0, auto
-           
-        }
     
-       
-    /* Show pointer cursor on clickable elements */
-    a, button, input[type="submit"], [role="button"], .clickable {
-        cursor: url('pointer.png'), pointer;
-    }
-</style>
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #00fff7;
+            --secondary-color: #ff00c8;
+            --bg-light: #ffffff;
+            --text-light: #333333;
+            --bg-dark: #121212;
+            --text-dark: #ffffff;
+            --header-dark: #1e1e1e;
+        }
+        
+        /* Dark Mode Classes */
+        body.dark-mode {
+            background-color: var(--bg-dark);
+            color: var(--text-dark);
+        }
+        
+        .dark-mode .header {
+            background-color: var(--header-dark);
+        }
+        
+        .dark-mode .product__item {
+            background-color: #2a2a2a;
+            color: var(--text-dark);
+        }
+        
+        /* Default cursor */
+        body {
+            cursor: url('cursor.png') 0 0, auto;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        /* Show pointer cursor on clickable elements */
+        a, button, input[type="submit"], [role="button"], .clickable {
+            cursor: url('pointer.png'), pointer;
+        }
+        
+        /* Hover Effects */
+        .product__item {
+            transition: all 0.3s ease;
+        }
+        
+        .product__item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .primary-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .primary-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Dark Mode Toggle */
+        #dark-mode-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: #000;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Footer Styles */
+        .footer {
+            background-color: #0f0f0f;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .social-links {
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 24px;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero__text h2 {
+                font-size: 2rem;
+            }
+            
+            .product__item {
+                margin-bottom: 20px;
+            }
+            
+            #ai-toggle {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+        }
+        
+        /* Enhanced AI Chat */
+        #ai-toggle {
+            position: fixed;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            background: #0f0f0f;
+            color: var(--primary-color);
+            padding: 10px 14px;
+            border: none;
+            border-radius: 14px 0 0 14px;
+            cursor: pointer;
+            z-index: 10000;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 0 12px var(--primary-color);
+            text-shadow: 0 0 4px var(--primary-color);
+            transition: all 0.3s ease-in-out;
+            animation: pulseGlow 2s infinite ease-in-out;
+        }
+        
+        #ai-toggle:hover {
+            background: #1a1a1a;
+            color: var(--secondary-color);
+            box-shadow: 0 0 14px var(--secondary-color);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% {
+                box-shadow: 0 0 12px var(--primary-color);
+            }
+            50% {
+                box-shadow: 0 0 18px var(--primary-color);
+            }
+        }
+        
+        #ai-frame {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 300px;
+            height: 460px;
+            border: none;
+            display: none;
+            z-index: 9999;
+            box-shadow: 0 0 20px rgba(255, 0, 200, 0.4);
+            border-radius: 16px;
+            overflow: hidden;
+            animation: slideIn 0.4s ease-in-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -62,12 +237,10 @@
                                 <li class="active"><a href="./index.html">Homepage</a></li>
                                 <li><a href="dashboard.html">Projects Done <span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
-                                        
                                         <li><a href="./anime-details.html">Plugins</a></li>
                                         <li><a href="./I-PHONE-BY-HTML-CSS-JAVASCRIPT--main/index.html">Software</a></li>
                                         <li><a href="ai.html">AI assistance</a></li>
                                         <li><a href="./iPortfolio-1.0.0/index.html">About Me</a></li>
-                                       
                                     </ul>
                                 </li>
                                 <li><a href="./blog.html">Our Images</a></li>
@@ -79,7 +252,6 @@
                 <div class="col-lg-2">
                     <div class="header__right">
                         <a href="#" class="search-switch"><span class="icon_search"></span></a>
-                       
                     </div>
                 </div>
             </div>
@@ -92,39 +264,38 @@
     <section class="hero">
         <div class="container">
             <div class="hero__slider owl-carousel">
-                <div class="hero__items set-bg" data-setbg="gaming.jpg">
+                <div class="hero__items set-bg" data-setbg="gaming.jpg" data-aos="fade-in">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="hero__text">
                                 <div class="label">Webpage</div>
                                 <h2>Welcome to Ayush HUB</h2>
                                 <p>The web of Anushtup Nath...</p>
-                                <a href="anime-details.html"><span>Lets Dive</span><i class="fa fa-angle-right"></i> </a>
+                                <a href="anime-details.html" class="primary-btn"><span>Lets Dive</span><i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="hero__items set-bg" data-setbg="a_cosmic_vista_artwork-wallpaper-1920x1080.jpg">
+                <div class="hero__items set-bg" data-setbg="a_cosmic_vista_artwork-wallpaper-1920x1080.jpg" data-aos="fade-in">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="hero__text">
                                <div class="label">Tour</div>
                                 <h2>Amazing Projects</h2>
                                 <p>100+ interesting projects...</p>
-                                <a href="dashboard.html"><span>Projects</span><i class="fa fa-angle-right"></i> </a>
+                                <a href="dashboard.html" class="primary-btn"><span>Projects</span><i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="hero__items set-bg" data-setbg="cute_kitten_close_up-wallpaper-1920x1080.jpg">
+                <div class="hero__items set-bg" data-setbg="cute_kitten_close_up-wallpaper-1920x1080.jpg" data-aos="fade-in">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="hero__text">
                                 <div class="label">Thanks</div>
                                 <h2>Hope you will enjoy in this webpage</h2>
                                 <p>Thank You...</p>
-                                <a href="./iPortfolio-1.0.0/index.html"><span>About Me</span><i class="fa fa-angle-right"></i></a>
-
+                                <a href="./iPortfolio-1.0.0/index.html" class="primary-btn"><span>About Me</span><i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -153,7 +324,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="col-lg-4 col-md-6 col-sm-6" data-aos="fade-up" data-aos-delay="100">
                                 <div class="product__item">
                                     <div class="product__item__pic set-bg" data-setbg="mc.png">
                                         <div class="ep">18 / 18</div>
@@ -165,11 +336,11 @@
                                             <li>Active</li>
                                             <li>Game</li>
                                         </ul>
-                                        <h5><a href="https://www.minecraft.net/en-us">Minecraft, a world where anything is possible.</a></h5>
+                                        <h5><a href="https://www.minecraft.net/en-us" target="_blank" rel="noopener">Minecraft, a world where anything is possible.</a></h5>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="col-lg-4 col-md-6 col-sm-6" data-aos="fade-up" data-aos-delay="200">
                                 <div class="product__item">
                                     <div class="product__item__pic set-bg" data-setbg="gta.png">
                                         <div class="ep">18 / 18</div>
@@ -181,11 +352,11 @@
                                             <li>Active</li>
                                             <li>Game</li>
                                         </ul>
-                                        <h5><a href="https://www.rockstargames.com/gta-v">You Forget A Thousand Things Every Day, Pal. Make Sure This Is One Of 'Em.</a></h5>
+                                        <h5><a href="https://www.rockstargames.com/gta-v" target="_blank" rel="noopener">You Forget A Thousand Things Every Day, Pal. Make Sure This Is One Of 'Em.</a></h5>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="col-lg-4 col-md-6 col-sm-6" data-aos="fade-up" data-aos-delay="300">
                                 <div class="product__item">
                                     <div class="product__item__pic set-bg" data-setbg="ff.png">
                                         <div class="ep">18 / 18</div>
@@ -197,11 +368,11 @@
                                             <li>Active</li>
                                             <li>Game</li>
                                         </ul>
-                                        <h5><a href="https://ff.garena.com/en">Free Fire is a world-famous survival shooter game available on mobile.</a></h5>
+                                        <h5><a href="https://ff.garena.com/en" target="_blank" rel="noopener">Free Fire is a world-famous survival shooter game available on mobile.</a></h5>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="col-lg-4 col-md-6 col-sm-6" data-aos="fade-up" data-aos-delay="400">
                                 <div class="product__item">
                                     <div class="product__item__pic set-bg" data-setbg="bgmi.png">
                                         <div class="ep">18 / 18</div>
@@ -213,11 +384,11 @@
                                             <li>Active</li>
                                             <li>Game</li>
                                         </ul>
-                                        <h5><a href="https://www.battlegroundsmobileindia.com/">BGMI is an example of gaming excellence.</a></h5>
+                                        <h5><a href="https://www.battlegroundsmobileindia.com/" target="_blank" rel="noopener">BGMI is an example of gaming excellence.</a></h5>
                                     </div>
                                 </div>
                             </div>
-                             <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="col-lg-4 col-md-6 col-sm-6" data-aos="fade-up" data-aos-delay="500">
                                 <div class="product__item">
                                     <div class="product__item__pic set-bg" data-setbg="roblox.jpg">
                                         <div class="ep">18 / 18</div>
@@ -229,11 +400,11 @@
                                             <li>Active</li>
                                             <li>Game</li>
                                         </ul>
-                                        <h5><a href="https://www.roblox.com/">Roblox games reflect the sort of imaginative play you often find in the playground. </a></h5>
+                                        <h5><a href="https://www.roblox.com/" target="_blank" rel="noopener">Roblox games reflect the sort of imaginative play you often find in the playground.</a></h5>
                                     </div>
                                 </div>
                             </div>
-                             <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="col-lg-4 col-md-6 col-sm-6" data-aos="fade-up" data-aos-delay="600">
                                 <div class="product__item">
                                     <div class="product__item__pic set-bg" data-setbg="pubg.jpg">
                                         <div class="ep">18 / 18</div>
@@ -245,125 +416,118 @@
                                             <li>Active</li>
                                             <li>Game</li>
                                         </ul>
-                                        <h5><a href="https://www.pubg.com/en/events/wwrdevent"> BATTLEGROUNDS is a battle royale that pits 100 players against each other.</a></h5>
+                                        <h5><a href="https://www.pubg.com/en/events/wwrdevent" target="_blank" rel="noopener">BATTLEGROUNDS is a battle royale that pits 100 players against each other.</a></h5>
                                     </div>
                                 </div>
                             </div>
-                            
-                            
-                    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Product Section End -->
 
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2023 Ayush HUB. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" aria-label="GitHub"><i class="fa fa-github"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
 
-
-  <!-- Search model Begin -->
-  <div class="search-model">
-    <div class="h-100 d-flex align-items-center justify-content-center">
-        <div class="search-close-switch"><i class="icon_close"></i></div>
-        <form class="search-model-form" action="https://www.google.com/search" method="get">
-            <input type="text" id="search-input" placeholder="Search here....." name="q">
-            
+    <!-- Search model Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch"><i class="icon_close"></i></div>
+            <form class="search-model-form" action="https://www.google.com/search" method="get">
+                <input type="text" id="search-input" placeholder="Search here....." name="q">
             </form>
+        </div>
     </div>
-</div>
-<!-- Search model end -->
+    <!-- Search model end -->
 
-<!-- Js Plugins -->
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/player.js"></script>
-<script src="js/jquery.nice-select.min.js"></script>
-<script src="js/mixitup.min.js"></script>
-<script src="js/jquery.slicknav.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/main.js"></script>
-                            <!-- Enhanced AI Chat with Sound + Animation -->
-<style>
-  #ai-toggle {
-    position: fixed;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    background: #0f0f0f;
-    color: #00fff7;
-    padding: 10px 14px;
-    border: none;
-    border-radius: 14px 0 0 14px;
-    cursor: pointer;
-    z-index: 10000;
-    font-family: 'Oswald', sans-serif;
-    font-weight: 600;
-    font-size: 14px;
-    box-shadow: 0 0 12px #00fff7;
-    text-shadow: 0 0 4px #00fff7;
-    transition: all 0.3s ease-in-out;
-    animation: pulseGlow 2s infinite ease-in-out;
-  }
+    <!-- Dark Mode Toggle -->
+    <button id="dark-mode-toggle" aria-label="Toggle Dark Mode">🌙</button>
 
-  #ai-toggle:hover {
-    background: #1a1a1a;
-    color: #ff00c8;
-    box-shadow: 0 0 14px #ff00c8;
-    transform: translateY(-50%) scale(1.1);
-  }
+    <!-- Enhanced AI Chat with Sound + Animation -->
+    <button id="ai-toggle" aria-label="Open AI Chat">💬 Chat Now</button>
+    <iframe id="ai-frame" src="https://www.chatbase.co/chatbot-iframe/1w3JkqN6CaV2hYpgmCSGm" title="AI Assistant"></iframe>
+    <audio id="click-sound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5fefb5b1e2.mp3?filename=interface-click-124467.mp3" preload="auto"></audio>
 
-  @keyframes pulseGlow {
-    0%, 100% {
-      box-shadow: 0 0 12px #00fff7;
-    }
-    50% {
-      box-shadow: 0 0 18px #00fff7;
-    }
-  }
+    <!-- Js Plugins -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/mixitup.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
 
-  #ai-frame {
-    position: fixed;
-    bottom: 90px;
-    right: 20px;
-    width: 300px;
-    height: 460px;
-    border: none;
-    display: none;
-    z-index: 9999;
-    box-shadow: 0 0 20px rgba(255, 0, 200, 0.4);
-    border-radius: 16px;
-    overflow: hidden;
-    animation: slideIn 0.4s ease-in-out;
-  }
-
-  @keyframes slideIn {
-    from {
-      transform: translateY(30px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-</style>
-
-<button id="ai-toggle">💬 Chat Now</button>
-<iframe id="ai-frame" src="https://www.chatbase.co/chatbot-iframe/1w3JkqN6CaV2hYpgmCSGm" title="AI"></iframe>
-<audio id="click-sound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5fefb5b1e2.mp3?filename=interface-click-124467.mp3" preload="auto"></audio>
-
-<script>
-  const toggleAI = document.getElementById('ai-toggle');
-  const aiFrame = document.getElementById('ai-frame');
-  const clickSound = document.getElementById('click-sound');
-
-  toggleAI.addEventListener('click', () => {
-    clickSound.currentTime = 0;
-    clickSound.play();
-    if (aiFrame.style.display === 'none') {
-      aiFrame.style.display = 'block';
-    } else {
-      aiFrame.style.display = 'none';
-    }
-  });
-</script>
-
-
-
+    <script>
+        // Initialize AOS Animation
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        });
+        
+        // AI Chat Toggle
+        const toggleAI = document.getElementById('ai-toggle');
+        const aiFrame = document.getElementById('ai-frame');
+        const clickSound = document.getElementById('click-sound');
+        
+        toggleAI.addEventListener('click', () => {
+            clickSound.currentTime = 0;
+            clickSound.play();
+            aiFrame.style.display = aiFrame.style.display === 'none' ? 'block' : 'none';
+        });
+        
+        // Lazy Loading for Images
+        document.addEventListener("DOMContentLoaded", function() {
+            const lazyImages = [].slice.call(document.querySelectorAll("img[loading='lazy']"));
+            
+            if ("IntersectionObserver" in window) {
+                let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            let lazyImage = entry.target;
+                            lazyImage.src = lazyImage.dataset.src;
+                            lazyImageObserver.unobserve(lazyImage);
+                        }
+                    });
+                });
+                
+                lazyImages.forEach(function(lazyImage) {
+                    lazyImageObserver.observe(lazyImage);
+                });
+            }
+        });
+    </script>
 </body>
-
 </html>
