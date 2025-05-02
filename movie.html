@@ -1,0 +1,1926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayush HUB - The Ultimate Movie Experience</title>
+    <link rel="icon" type="image/x-icon" href="ytlogo.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #e50914;
+            --primary-dark: #b00710;
+            --dark: #0f0f1a;
+            --dark-alt: #1a1a2e;
+            --light: #ffffff;
+            --light-alt: #aaaaaa;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* Header/Navbar Styles */
+        header {
+            background-color: rgba(26, 26, 46, 0.9);
+            padding: 15px 10;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .container {
+            width: 95%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+        
+        /* Desktop Navigation */
+        .desktop-nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .desktop-nav ul li {
+            margin-left: 25px;
+            position: relative;
+        }
+        
+        .desktop-nav ul li a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+        
+        .desktop-nav ul li a i {
+            margin-right: 8px;
+            font-size: 16px;
+        }
+        
+        .desktop-nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .desktop-nav ul li::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .desktop-nav ul li:hover::after {
+            width: 100%;
+        }
+        
+        .auth-buttons .btn {
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-left: 15px;
+            font-size: 16px;
+        }
+        
+        .auth-buttons .btn-login {
+            background: transparent;
+            color: var(--light);
+            border: 1px solid var(--light);
+        }
+        
+        .auth-buttons .btn-login:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        /* Mobile Navigation */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background-color: var(--dark-alt);
+            z-index: 2000;
+            transition: var(--transition);
+            padding: 20px;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .mobile-nav.active {
+            left: 0;
+        }
+        
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .mobile-nav-logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .mobile-close-btn {
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .mobile-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .mobile-nav ul li {
+            margin-bottom: 15px;
+        }
+        
+        .mobile-nav ul li a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+        
+        .mobile-nav ul li a:hover {
+            background: rgba(229, 9, 20, 0.2);
+            color: var(--primary);
+        }
+        
+        .mobile-nav ul li a i {
+            margin-right: 10px;
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+        }
+        
+        .mobile-auth-buttons {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .mobile-auth-buttons .btn {
+            width: 100%;
+            padding: 12px;
+            text-align: center;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1500;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .desktop-nav, .auth-buttons {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--dark-alt);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+        
+        /* Header */
+        header {
+            background-color: rgba(26, 26, 46, 0.9);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            padding: 15px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--light);
+            margin-left: 5px;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+        
+        nav ul li a i {
+            margin-right: 8px;
+            font-size: 16px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        nav ul li:hover::after {
+            width: 100%;
+        }
+        
+        .auth-buttons .btn {
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-left: 15px;
+        }
+        
+        .auth-buttons .btn-login {
+            background: transparent;
+            color: var(--light);
+            border: 1px solid var(--light);
+        }
+        
+        .auth-buttons .btn-login:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .auth-buttons .btn-signup {
+            background: var(--primary);
+            color: var(--light);
+            border: 1px solid var(--primary);
+        }
+        
+        .auth-buttons .btn-signup:hover {
+            background: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            background: linear-gradient(135deg, rgba(15, 15, 26, 0.8) 0%, rgba(26, 26, 46, 0.6) 100%), 
+                        url('https://image.tmdb.org/t/p/original/9yBVqNruk6Ykrwc32qrK2TIE5xw.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(transparent, var(--dark));
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero h1 {
+            font-size: 60px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: var(--light-alt);
+            line-height: 1.6;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .hero-btn {
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-btn i {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+        
+        .hero-btn-primary {
+            background: var(--primary);
+            color: var(--light);
+            border: none;
+        }
+        
+        .hero-btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(229, 9, 20, 0.3);
+        }
+        
+        .hero-btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--light);
+            border: none;
+            backdrop-filter: blur(5px);
+        }
+        
+        .hero-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-meta {
+            display: flex;
+            margin-top: 30px;
+            gap: 30px;
+        }
+        
+        .hero-meta-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .hero-meta-item i {
+            font-size: 24px;
+            margin-right: 10px;
+            color: var(--primary);
+        }
+        
+        .hero-meta-text h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .hero-meta-text p {
+            font-size: 14px;
+            color: var(--light-alt);
+            margin: 0;
+        }
+        
+        /* Featured Movies Carousel */
+        .featured-carousel {
+            position: absolute;
+            bottom: 50px;
+            left: 0;
+            width: 100%;
+            z-index: 2;
+        }
+        
+        .featured-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .featured-title i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+        
+        .featured-movies {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            scrollbar-width: none;
+        }
+        
+        .featured-movies::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .featured-card {
+            min-width: 200px;
+            height: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+        
+        .featured-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .featured-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .featured-card:hover img {
+            transform: scale(1.1);
+            opacity: 0.7;
+        }
+        
+        .featured-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .featured-card:hover .featured-card-overlay {
+            opacity: 1;
+        }
+        
+        .featured-card-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .featured-card-meta {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            color: var(--light-alt);
+        }
+        
+        .featured-card-meta i {
+            color: var(--primary);
+            margin-right: 5px;
+        }
+        
+        .featured-card-meta span {
+            margin-right: 15px;
+        }
+        
+        /* Main Content */
+        main {
+            padding-top: 50px;
+            position: relative;
+            z-index: 3;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .section-nav {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .section-nav-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--dark-alt);
+            color: var(--light);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .section-nav-btn:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+        }
+        
+        .movie-card {
+            background-color: var(--dark-alt);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .movie-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .movie-card-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary);
+            color: var(--light);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 2;
+        }
+        
+        .movie-poster {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .movie-card:hover .movie-poster {
+            opacity: 0.8;
+        }
+        
+        .movie-info {
+            padding: 20px;
+        }
+        
+        .movie-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .movie-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--light-alt);
+            font-size: 14px;
+        }
+        
+        .movie-year {
+            display: flex;
+            align-items: center;
+        }
+        
+        .movie-year i {
+            margin-right: 5px;
+            color: var(--primary);
+            font-size: 12px;
+        }
+        
+        .movie-rating {
+            display: flex;
+            align-items: center;
+        }
+        
+        .movie-rating i {
+            margin-right: 5px;
+            color: #ffc107;
+        }
+        
+        .movie-actions {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            gap: 15px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .movie-card:hover .movie-actions {
+            opacity: 1;
+        }
+        
+        .movie-action-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            color: var(--light);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .movie-action-btn:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+        
+        /* Player */
+        .player-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .player-container.active {
+            opacity: 1;
+            display: flex;
+        }
+        
+        .player-header {
+            width: 90%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+        
+        .player-title {
+            font-size: 24px;
+            color: var(--light);
+            font-weight: 600;
+        }
+        
+        .player-close {
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            color: var(--light);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .player-close:hover {
+            background: var(--primary);
+            transform: rotate(90deg);
+        }
+        
+        .movie-player {
+            width: 90%;
+            max-width: 1200px;
+            height: 70vh;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .player-controls {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .player-btn {
+            padding: 10px 25px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+        
+        .player-btn i {
+            margin-right: 8px;
+        }
+        
+        .player-btn-primary {
+            background: var(--primary);
+            color: var(--light);
+            border: none;
+        }
+        
+        .player-btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(229, 9, 20, 0.4);
+        }
+        
+        .player-btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            border: none;
+        }
+        
+        .player-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-alt);
+            padding: 60px 0 30px;
+            margin-top: 80px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--light-alt);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-links a i {
+            margin-right: 8px;
+            font-size: 12px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .footer-social a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-text {
+            color: var(--light-alt);
+            font-size: 14px;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+            
+            nav ul li {
+                margin-left: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 600px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .hero-btn {
+                width: 100%;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            nav ul li {
+                margin-left: 0;
+            }
+            
+            .auth-buttons {
+                margin-top: 15px;
+            }
+            
+            .movie-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 15px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero-meta {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+            }
+        }
+        @media (max-width: 768px) {
+    .header-content {
+        flex-direction: row; /* Change from column to row */
+        justify-content: space-between; /* Add space between items */
+        align-items: center; /* Center items vertically */
+        gap: 0; /* Remove gap if it exists */
+    }
+
+    .logo {
+        margin-right: auto; /* Push logo to the left */
+    }
+
+    .mobile-menu-btn {
+        margin-left: auto; /* Push menu button to the right */
+    }
+
+    /* Remove or adjust these if they exist */
+    nav ul {
+        flex-wrap: nowrap; /* Change from wrap to nowrap if needed */
+        justify-content: flex-start; /* Adjust as needed */
+    }
+
+    .auth-buttons {
+        margin-top: 0; /* Remove top margin */
+    }
+}
+@media (max-width: 576px) {
+    .header-content {
+        flex-direction: row; /* Ensure it stays in a row */
+    }
+
+    .logo {
+        font-size: 24px; /* Reduce logo size if needed */
+    }
+
+    .mobile-menu-btn {
+        font-size: 20px; /* Adjust menu button size */
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <img src="logo.png"  heigth="250" width="100">
+                
+                <!-- Desktop Navigation -->
+                <nav class="desktop-nav">
+                    <ul>
+                        <li><a href="#hero"><i class="fas fa-home"></i> Home</a></li>
+                         <li>&nbsp;</li>
+                         <li>&nbsp;</li>
+                        <li><a href="#movie"><i class="fas fa-play-circle"></i> Movies</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="auth-buttons">
+                    <a href="index.html"><button class="btn btn-login">Return To Main Ayush HUB</button></a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <div class="mobile-nav-logo">
+                <i class="fas fa-film"></i> Ayush HUB
+            </div>
+            <button class="mobile-close-btn" id="mobileCloseBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="#hero"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#movie"><i class="fas fa-play-circle"></i> Movies</a></li>
+            </ul>
+        </nav>
+        
+        <div class="mobile-auth-buttons">
+            <a href="index.html"><button class="btn btn-login">Return To Main</button></a>
+        </div>
+    </div>
+    
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Unlimited Movies, TV Shows & More.</h1>
+                <p>Watch anywhere. Cancel anytime. Ready to watch? Enter your email to create or restart your membership.</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                
+            </div>
+        </div>
+        
+        <!-- Featured Movies Carousel -->
+        <div class="featured-carousel">
+            <div class="container">
+                <h3 class="featured-title"><i class="fas fa-fire"></i> Trending Now</h3>
+                <div class="featured-movies">
+                    <div class="featured-card" onclick="playMovie('Doraemon The Movie Nobita Ki Nayi Duniya Hindi', 'https://geo.dailymotion.com/player.html?video=x8y5oec')">
+                        <img src="d1.jpg" alt="Doraemon The Movie Nobita Ki Nayi Duniya Hindi">
+                        <div class="featured-card-overlay">
+                            <h4 class="featured-card-title">Doraemon The Movie Nobita Ki Nayi Duniya Hindi</h4>
+                            <div class="featured-card-meta">
+                                <span><i class="fas fa-star"></i> 8.4</span>
+                                <span><i class="fas fa-calendar-alt"></i> 2019</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="featured-card" onclick="playMovie('Doremon Movie Nobita in Jannat', 'https://geo.dailymotion.com/player.html?video=x8wu7oy')">
+                        <img src="d2.webp" alt="Doremon Movie Nobita in Jannat">
+                        <div class="featured-card-overlay">
+                            <h4 class="featured-card-title">Doremon Movie Nobita in Jannat</h4>
+                            <div class="featured-card-meta">
+                                <span><i class="fas fa-star"></i> 8.2</span>
+                                <span><i class="fas fa-calendar-alt"></i> 2021</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="featured-card" onclick="playMovie('Doraemon the Movie Nobita\'s Treasure Island (Hindi)', 'https://geo.dailymotion.com/player.html?video=x91ccw4')">
+                        <img src="d3.jpg" alt="Doraemon the Movie Nobita's Treasure Island (Hindi)">
+                        <div class="featured-card-overlay">
+                            <h4 class="featured-card-title">Doraemon the Movie Nobita's Treasure Island (Hindi)</h4>
+                            <div class="featured-card-meta">
+                                <span><i class="fas fa-star"></i> 7.9</span>
+                                <span><i class="fas fa-calendar-alt"></i> 2022</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="featured-card" onclick="playMovie('Doraemon The Movie Gadget Museum Ka Rahasya in Hindi', 'https://geo.dailymotion.com/player.html?video=x94fv3w')">
+                        <img src="d4.jpg" alt="Doraemon The Movie Gadget Museum Ka Rahasya in Hindi">
+                        <div class="featured-card-overlay">
+                            <h4 class="featured-card-title">Doraemon The Movie Gadget Museum Ka Rahasya in Hindi</h4>
+                            <div class="featured-card-meta">
+                                <span><i class="fas fa-star"></i> 8.0</span>
+                                <span><i class="fas fa-calendar-alt"></i> 2021</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="featured-card" onclick="playMovie('Doraemon The Movie Nobita And Jungle Mein Dangal', 'https://geo.dailymotion.com/player.html?video=x8w34ly')">
+                        <img src="d5.webp" alt="Doraemon The Movie Nobita And Jungle Mein Dangal">
+                        <div class="featured-card-overlay">
+                            <h4 class="featured-card-title">Doraemon The Movie Nobita And Jungle Mein Dangal</h4>
+                            <div class="featured-card-meta">
+                                <span><i class="fas fa-star"></i> 8.3</span>
+                                <span><i class="fas fa-calendar-alt"></i> 2022</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="featured-card" onclick="playMovie('Doraemon The Movie Adventure of Koya Koya Planet in Hindi', 'https://geo.dailymotion.com/player.html?video=x94wgzy')">
+                        <img src="d6.jpg" alt="Doraemon The Movie Adventure of Koya Koya Planet in Hindi">
+                        <div class="featured-card-overlay">
+                            <h4 class="featured-card-title">Doraemon The Movie Adventure of Koya Koya Planet in Hindi</h4>
+                            <div class="featured-card-meta">
+                                <span><i class="fas fa-star"></i> 7.3</span>
+                                <span><i class="fas fa-calendar-alt"></i> 2022</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Main Content -->
+    <main class="container"  id="movie">
+        <!-- Popular Movies Section -->
+        <section class="movie-section">
+            <div class="section-header">
+                <h2 class="section-title">Popular Movies</h2>
+                <div class="section-nav">
+                    <button class="section-nav-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="section-nav-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            <div class="movie-grid">
+                <div class="movie-card" onclick="playMovie('Doraemon Movie the Arabian Nights in Hindi', 'https://geo.dailymotion.com/player.html?video=x8o33p8')">
+                    <div class="movie-card-badge">NEW</div>
+                    <img src="d7.jpg" alt="Doraemon Movie the Arabian Nights in Hindi" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Doraemon Movie the Arabian Nights in Hindi</h3>
+                        <div class="movie-meta">
+                            <span class="movie-year"><i class="fas fa-calendar-alt"></i> 2022</span>
+                            <span class="movie-rating"><i class="fas fa-star"></i> 7.7</span>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="movie-action-btn"><i class="fas fa-play"></i></button>
+                       
+                    </div>
+                </div>
+                
+                <div class="movie-card" onclick="playMovie('Doraemon The Movie Nobita Aur Jadooi Tapu', 'https://geo.dailymotion.com/player.html?video=x8ygti0')">
+                    <img src="d8.jpg" alt="Doraemon The Movie Nobita Aur Jadooi Tapu" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Doraemon The Movie Nobita Aur Jadooi Tapu</h3>
+                        <div class="movie-meta">
+                            <span class="movie-year"><i class="fas fa-calendar-alt"></i> 2022</span>
+                            <span class="movie-rating"><i class="fas fa-star"></i> 7.2</span>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="movie-action-btn"><i class="fas fa-play"></i></button>
+                       
+                    </div>
+                </div>
+                
+                <div class="movie-card" onclick="playMovie('Doraemon Nobita In Hara Hara Planet in Hindi', 'https://geo.dailymotion.com/player.html?video=x9i8qc6')">
+                    <div class="movie-card-badge">HOT</div>
+                    <img src="d9.png" alt="Doraemon Nobita In Hara Hara Planet in Hindi" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Doraemon Nobita In Hara Hara Planet in Hindi</h3>
+                        <div class="movie-meta">
+                            <span class="movie-year"><i class="fas fa-calendar-alt"></i> 2022</span>
+                            <span class="movie-rating"><i class="fas fa-star"></i> 7.4</span>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="movie-action-btn"><i class="fas fa-play"></i></button>
+                      
+                    </div>
+                </div>
+                
+                <div class="movie-card" onclick="playMovie('DORAEMON : Nobita and the Three Dream Knights', 'https://geo.dailymotion.com/player.html?video=x9ijrkc')">
+                    <img src="d10.jpg" alt="DORAEMON : Nobita and the Three Dream Knights" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">DORAEMON : Nobita and the Three Dream Knights</h3>
+                        <div class="movie-meta">
+                            <span class="movie-year"><i class="fas fa-calendar-alt"></i> 2022</span>
+                            <span class="movie-rating"><i class="fas fa-star"></i> 6.9</span>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="movie-action-btn"><i class="fas fa-play"></i></button>
+                       
+                    </div>
+                </div>
+                
+                <div class="movie-card" onclick="playMovie('Doraemon The Movie Nobita in Ichi Mera Dost Hindi Movie', 'https://geo.dailymotion.com/player.html?video=x9hsumi')">
+                    <img src="d11.jpg" alt="Doraemon The Movie Nobita in Ichi Mera Dost Hindi Movie" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Doraemon The Movie Nobita in Ichi Mera Dost Hindi Movie</h3>
+                        <div class="movie-meta">
+                            <span class="movie-year"><i class="fas fa-calendar-alt"></i> 2022</span>
+                            <span class="movie-rating"><i class="fas fa-star"></i> 6.7</span>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="movie-action-btn"><i class="fas fa-play"></i></button>
+                      
+                    </div>
+                </div>
+                <div class="movie-card" onclick="playMovie('Doraemon The Movie Nobitas Dinosaur Hindi', 'https://geo.dailymotion.com/player.html?video=x8l8o7o')">
+                    <img src="d100.jpg" alt="Doraemon The Movie Nobitas Dinosaur Hindi" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Doraemon The Movie Nobitas Dinosaur Hindi</h3>
+                        <div class="movie-meta">
+                            <span class="movie-year"><i class="fas fa-calendar-alt"></i> 2022</span>
+                            <span class="movie-rating"><i class="fas fa-star"></i> 6.7</span>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="movie-action-btn"><i class="fas fa-play"></i></button>
+                      
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Latest Releases Section -->
+        <section class="movie-section">
+            <div class="section-header">
+                <h2 class="section-title">Latest Releases</h2>
+                <div class="section-nav">
+                    <button class="section-nav-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="section-nav-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            <div class="movie-grid">
+                <div class="movie-card" onclick="playMovie('Doremon old Movie Episode | Hindi Dubbed |', 'https://geo.dailymotion.com/player.html?video=x9dq9gq')">
+                    <img src="d12.jpg" alt="Doremon old Movie Episode | Hindi Dubbed |" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Doremon old Movie Episode | Hindi Dubbed |</h3>
+                        <div class="movie-meta">
+                            <span class="movie-year"><i class="fas fa-calendar-alt"></i> 2022</span>
+                            <span class="movie-rating"><i class="fas fa-star"></i> 7.4</span>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="movie-action-btn"><i class="fas fa-play"></i></button>
+                       
+                    </div>
+                </div>
+                
+                <div class="movie-card" onclick="playMovie('Doraemon: Nobita and the Steel Troops', 'https://geo.dailymotion.com/player.html?video=x9icmjo')">
+                    <div class="movie-card-badge">TOP</div>
+                    <img src="d13.jpg" alt="Doraemon: Nobita and the Steel Troops" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Doraemon: Nobita and the Steel Troops</h3>
+                        <div class="movie-meta">
+                            <span class="movie-year"><i class="fas fa-calendar-alt"></i> 2022</span>
+                            <span class="movie-rating"><i class="fas fa-star"></i> 8.3</span>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="movie-action-btn"><i class="fas fa-play"></i></button>
+                        
+                    </div>
+                </div>
+                
+                <div class="movie-card" onclick="playMovie('Doraemon: Nobita and the Knights on Dinosaurs', 'https://geo.dailymotion.com/player.html?video=x9crhs0')">
+                    <img src="d14.jpg" alt="Doraemon: Nobita and the Knights on Dinosaurs" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Doraemon: Nobita and the Knights on Dinosaurs</h3>
+                        <div class="movie-meta">
+                            <span class="movie-year"><i class="fas fa-calendar-alt"></i> 2022</span>
+                            <span class="movie-rating"><i class="fas fa-star"></i> 7.9</span>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="movie-action-btn"><i class="fas fa-play"></i></button>
+                        
+                    </div>
+                </div>
+                
+                <div class="movie-card" onclick="playMovie('Doraemon Nobita and the Haunts of Evil Movie', 'https://geo.dailymotion.com/player.html?video=x9iaoys')">
+                    <img src="d15.jpg" alt="Doraemon Nobita and the Haunts of Evil Movie" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Doraemon Nobita and the Haunts of Evil Movie</h3>
+                        <div class="movie-meta">
+                            <span class="movie-year"><i class="fas fa-calendar-alt"></i> 2022</span>
+                            <span class="movie-rating"><i class="fas fa-star"></i> 7.0</span>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="movie-action-btn"><i class="fas fa-play"></i></button>
+                       
+                    </div>
+                </div>
+                
+                <div class="movie-card" onclick="playMovie('Doraemon: Nobita and the Spiral City', 'https://geo.dailymotion.com/player.html?video=x9illoi')">
+                    <img src="d16.webp" alt="Doraemon: Nobita and the Spiral City" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Doraemon: Nobita and the Spiral City</h3>
+                        <div class="movie-meta">
+                            <span class="movie-year"><i class="fas fa-calendar-alt"></i> 2022</span>
+                            <span class="movie-rating"><i class="fas fa-star"></i> 6.7</span>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="movie-action-btn"><i class="fas fa-play"></i></button>
+                       
+                    </div>
+                </div>
+                <div class="movie-card" onclick="playMovie('Doraemon Nobita and the Birth of Japan', 'https://geo.dailymotion.com/player.html?video=x9ibtz2')">
+                    <img src="d17.webp" alt="Doraemon Nobita and the Birth of Japan" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Doraemon Nobita and the Birth of Japan</h3>
+                        <div class="movie-meta">
+                            <span class="movie-year"><i class="fas fa-calendar-alt"></i> 2022</span>
+                            <span class="movie-rating"><i class="fas fa-star"></i> 6.7</span>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="movie-action-btn"><i class="fas fa-play"></i></button>
+                        
+                    </div>
+                </div>
+                <div class="movie-card" onclick="playMovie('Doraemon: Great Adventure in the Antarctic Kachi Kochi', 'https://geo.dailymotion.com/player.html?video=x9iaa4u')">
+                    <img src="d18.webp" alt="Doraemon: Great Adventure in the Antarctic Kachi Kochi" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Doraemon: Great Adventure in the Antarctic Kachi Kochi</h3>
+                        <div class="movie-meta">
+                            <span class="movie-year"><i class="fas fa-calendar-alt"></i> 2022</span>
+                            <span class="movie-rating"><i class="fas fa-star"></i> 6.7</span>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="movie-action-btn"><i class="fas fa-play"></i></button>
+                        
+                    </div>
+                </div>
+                <div class="movie-card" onclick="playMovie('Stand by Me Doraemon 1', 'https://geo.dailymotion.com/player.html?video=x9g4wny')">
+                    <img src="d19.jpg" alt="Stand by Me Doraemon 1" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Stand by Me Doraemon 1</h3>
+                        <div class="movie-meta">
+                            <span class="movie-year"><i class="fas fa-calendar-alt"></i> 2022</span>
+                            <span class="movie-rating"><i class="fas fa-star"></i> 6.7</span>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="movie-action-btn"><i class="fas fa-play"></i></button>
+                        
+                    </div>
+                </div>
+                <div class="movie-card" onclick="playMovie('Stand by Me Doraemon 2', 'https://geo.dailymotion.com/player.html?video=x9g4v82')">
+                    <img src="d20.webp" alt="Stand by Me Doraemon 2" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Stand by Me Doraemon 2</h3>
+                        <div class="movie-meta">
+                            <span class="movie-year"><i class="fas fa-calendar-alt"></i> 2022</span>
+                            <span class="movie-rating"><i class="fas fa-star"></i> 6.7</span>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="movie-action-btn"><i class="fas fa-play"></i></button>
+                        
+                    </div>
+                </div>
+                <div class="movie-card" onclick="playMovie('Doraemon Jadoo Mantar Aur Jahnoom Movie', 'https://geo.dailymotion.com/player.html?video=x9ikixm')">
+                    <img src="d101.jpg" alt="Doraemon Jadoo Mantar Aur Jahnoom Movie (Hindi)" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Doraemon Jadoo Mantar Aur Jahnoom Movie (Hindi)</h3>
+                        <div class="movie-meta">
+                            <span class="movie-year"><i class="fas fa-calendar-alt"></i> 2022</span>
+                            <span class="movie-rating"><i class="fas fa-star"></i> 6.7</span>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="movie-action-btn"><i class="fas fa-play"></i></button>
+                        
+                    </div>
+                </div>
+                <div class="movie-card" onclick="playMovie('Doraemon: Nobita no Uchû Eiyûki', 'https://geo.dailymotion.com/player.html?video=x997uyu')">
+                    <img src="d21.jpg" alt="Doraemon: Nobita no Uchû Eiyûki" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Doraemon: Nobita no Uchû Eiyûki</h3>
+                        <div class="movie-meta">
+                            <span class="movie-year"><i class="fas fa-calendar-alt"></i> 2022</span>
+                            <span class="movie-rating"><i class="fas fa-star"></i> 6.7</span>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="movie-action-btn"><i class="fas fa-play"></i></button>
+                        
+                    </div>
+                </div>
+                <div class="movie-card" onclick="playMovie('Doraemon: Nobita Chronicle of the Moon Exploration', 'https://geo.dailymotion.com/player.html?video=x910wja')">
+                    <img src="d22.webp" alt="Doraemon: Nobita's Chronicle of the Moon Exploration" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Doraemon: Nobita's Chronicle of the Moon Exploration</h3>
+                        <div class="movie-meta">
+                            <span class="movie-year"><i class="fas fa-calendar-alt"></i> 2022</span>
+                            <span class="movie-rating"><i class="fas fa-star"></i> 6.7</span>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="movie-action-btn"><i class="fas fa-play"></i></button>
+                        
+                    </div>
+                </div>
+                <div class="movie-card" onclick="playMovie('New Dimension! Shinchan - Battle of Supernatural Powers', 'https://geo.dailymotion.com/player.html?video=x99d3mm')">
+                    <img src="d103.jpg" alt="New Dimension! Shinchan - Battle of Supernatural Powers" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">New Dimension! Shinchan - Battle of Supernatural Powers</h3>
+                        <div class="movie-meta">
+                            <span class="movie-year"><i class="fas fa-calendar-alt"></i> 2022</span>
+                            <span class="movie-rating"><i class="fas fa-star"></i> 6.7</span>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="movie-action-btn"><i class="fas fa-play"></i></button>
+                        
+                    </div>
+                </div>
+                <div class="movie-card" onclick="playMovie('Shinchan in the Dreaming World Movie', 'https://geo.dailymotion.com/player.html?video=x9492ae')">
+                    <img src="d104.webp" alt="Shinchan in the Dreaming World Movie" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Shinchan in the Dreaming World Movie </h3>
+                        <div class="movie-meta">
+                            <span class="movie-year"><i class="fas fa-calendar-alt"></i> 2022</span>
+                            <span class="movie-rating"><i class="fas fa-star"></i> 6.7</span>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="movie-action-btn"><i class="fas fa-play"></i></button>
+                        
+                    </div>
+                </div>
+                <div class="movie-card" onclick="playMovie('Shinchan Masala Movie', 'https://geo.dailymotion.com/player.html?video=x99d2to')">
+                    <img src="d105.webp" alt="Shinchan Masala Movie" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Shinchan Masala Movie</h3>
+                        <div class="movie-meta">
+                            <span class="movie-year"><i class="fas fa-calendar-alt"></i> 2022</span>
+                            <span class="movie-rating"><i class="fas fa-star"></i> 6.7</span>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="movie-action-btn"><i class="fas fa-play"></i></button>
+                        
+                    </div>
+                </div>
+                <div class="movie-card" onclick="playMovie('Shin Chan Movie: The Golden Sword in Hindi', 'https://geo.dailymotion.com/player.html?video=x8vz9g2')">
+                    <img src="d106.jpg" alt="Shin Chan Movie: The Golden Sword in Hindi" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Shin Chan Movie: The Golden Sword in Hindi</h3>
+                        <div class="movie-meta">
+                            <span class="movie-year"><i class="fas fa-calendar-alt"></i> 2022</span>
+                            <span class="movie-rating"><i class="fas fa-star"></i> 6.7</span>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="movie-action-btn"><i class="fas fa-play"></i></button>
+                        
+                    </div>
+                    
+                    
+                </div>
+                <div class="movie-card" onclick="playMovie('Shinchan Movie The Spy in Hindi', 'https://geo.dailymotion.com/player.html?video=x8xbl3y')">
+                    <img src="d107.jpg" alt="Shinchan Movie The Spy in Hindi" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Shinchan Movie The Spy in Hindi</h3>
+                        <div class="movie-meta">
+                            <span class="movie-year"><i class="fas fa-calendar-alt"></i> 2022</span>
+                            <span class="movie-rating"><i class="fas fa-star"></i> 6.7</span>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="movie-action-btn"><i class="fas fa-play"></i></button>
+                        
+                    </div>
+                </div>
+                <div class="movie-card" onclick="playMovie('Shin Chan Robot Dad Full Movie in Hindi', 'https://geo.dailymotion.com/player.html?video=x8wp1zs')">
+                    <img src="d108.jpg" alt="Shin Chan Robot Dad Full Movie in Hindi" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Shin Chan Robot Dad Full Movie in Hindi</h3>
+                        <div class="movie-meta">
+                            <span class="movie-year"><i class="fas fa-calendar-alt"></i> 2022</span>
+                            <span class="movie-rating"><i class="fas fa-star"></i> 6.7</span>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="movie-action-btn"><i class="fas fa-play"></i></button>
+                        
+                    </div>
+                </div>
+                <div class="movie-card" onclick="playMovie('Shinchan the Movie_ The Mystery of Tenkasu Academy', 'https://geo.dailymotion.com/player.html?video=x9giksa')">
+                    <img src="d109.webp" alt="Shinchan the Movie_ The Mystery of Tenkasu Academy" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Shinchan the Movie_ The Mystery of Tenkasu Academy</h3>
+                        <div class="movie-meta">
+                            <span class="movie-year"><i class="fas fa-calendar-alt"></i> 2022</span>
+                            <span class="movie-rating"><i class="fas fa-star"></i> 6.7</span>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="movie-action-btn"><i class="fas fa-play"></i></button>
+                        
+                    </div>
+                </div>
+                <div class="movie-card" onclick="playMovie('Shinchan Cactus Movie', 'https://geo.dailymotion.com/player.html?video=x9h61km')">
+                    <img src="d110.jpg" alt="Shinchan Cactus Movie" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Shinchan Cactus Movie </h3>
+                        <div class="movie-meta">
+                            <span class="movie-year"><i class="fas fa-calendar-alt"></i> 2022</span>
+                            <span class="movie-rating"><i class="fas fa-star"></i> 6.7</span>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="movie-action-btn"><i class="fas fa-play"></i></button>
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+        
+        <!-- Coming Soon Section -->
+        <section class="movie-section">
+            <div class="section-header">
+                <h2 class="section-title">Coming Soon</h2>
+                <div class="section-nav">
+                    <button class="section-nav-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="section-nav-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            <div class="movie-grid">
+                
+                
+                
+                
+                <div class="movie-card">
+                    <div class="movie-card-badge">SOON</div>
+                    <img src="d23.jpg" alt="Eiga Doraemon Nobita no Ritoru Sutâ Wôzu 2021" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Eiga Doraemon Nobita no Ritoru Sutâ Wôzu 2021</h3>
+                        <div class="movie-meta">
+                            <span class="movie-year"><i class="fas fa-calendar-alt"></i> 2023</span>
+                            <span class="movie-rating"><i class="fas fa-star"></i> -</span>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="movie-action-btn"><i class="fas fa-bell"></i></button>
+                        <button class="movie-action-btn"><i class="fas fa-plus"></i></button>
+                        <button class="movie-action-btn"><i class="fas fa-info"></i></button>
+                    </div>
+                </div>
+                
+                <div class="movie-card">
+                    <div class="movie-card-badge">SOON</div>
+                    <img src="d24.jpg" alt="Doraemon the Movie: Nobita's Dinosaur" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Doraemon the Movie: Nobita's Dinosaur</h3>
+                        <div class="movie-meta">
+                            <span class="movie-year"><i class="fas fa-calendar-alt"></i> 2023</span>
+                            <span class="movie-rating"><i class="fas fa-star"></i> -</span>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="movie-action-btn"><i class="fas fa-bell"></i></button>
+                        <button class="movie-action-btn"><i class="fas fa-plus"></i></button>
+                        <button class="movie-action-btn"><i class="fas fa-info"></i></button>
+                    </div>
+                </div>
+                
+                <div class="movie-card">
+                    <div class="movie-card-badge">SOON</div>
+                    <img src="d25.jpg" alt="Doraemon: Nobita and the Winged Braves" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Doraemon: Nobita and the Winged Braves</h3>
+                        <div class="movie-meta">
+                            <span class="movie-year"><i class="fas fa-calendar-alt"></i> 2023</span>
+                            <span class="movie-rating"><i class="fas fa-star"></i> -</span>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="movie-action-btn"><i class="fas fa-bell"></i></button>
+                        <button class="movie-action-btn"><i class="fas fa-plus"></i></button>
+                        <button class="movie-action-btn"><i class="fas fa-info"></i></button>
+                    </div>
+                </div>
+                <div class="movie-card">
+                    <div class="movie-card-badge">SOON</div>
+                    <img src="d26.jpg" alt="Doraemon: Nobita and the Wind Wizard" class="movie-poster">
+                    <div class="movie-info">
+                        <h3 class="movie-title">Doraemon: Nobita and the Wind Wizard</h3>
+                        <div class="movie-meta">
+                            <span class="movie-year"><i class="fas fa-calendar-alt"></i> 2023</span>
+                            <span class="movie-rating"><i class="fas fa-star"></i> -</span>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="movie-action-btn"><i class="fas fa-bell"></i></button>
+                        <button class="movie-action-btn"><i class="fas fa-plus"></i></button>
+                        <button class="movie-action-btn"><i class="fas fa-info"></i></button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+    
+    <!-- Movie Player -->
+    <div class="player-container" id="playerContainer">
+        <div class="player-header">
+            <h2 class="player-title" id="playerTitle">Movie Title</h2>
+            <button class="player-close" onclick="closePlayer()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <iframe class="movie-player" id="moviePlayer" allowfullscreen></iframe>
+        <div class="player-controls">
+            <button class="player-btn player-btn-primary" onclick="toggleFullscreen()">
+                <i class="fas fa-expand"></i> Fullscreen
+            </button>
+            <button class="player-btn player-btn-secondary">
+                <i class="fas fa-plus"></i> Watchlist
+            </button>
+            <button class="player-btn player-btn-secondary">
+                <i class="fas fa-share-alt"></i> Share
+            </button>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Ayush HUB</h3>
+                    <ul class="footer-links">
+                        <li><a href="./iPortfolio-1.0.0/index.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                        
+                    </ul>
+                </div>
+                
+                
+               
+            <div class="footer-bottom">
+                <p class="footer-text">© 2023 Ayush HUB. All Rights Reserved. | This product uses the TMDB API but is not endorsed or certified by TMDB.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Header Scroll Effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Movie Player Functions
+        function playMovie(title, url) {
+            document.getElementById('playerTitle').textContent = title;
+            document.getElementById('moviePlayer').src = url;
+            document.getElementById('playerContainer').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closePlayer() {
+            document.getElementById('playerContainer').classList.remove('active');
+            setTimeout(() => {
+                document.getElementById('moviePlayer').src = '';
+            }, 300);
+            document.body.style.overflow = 'auto';
+        }
+        
+        function toggleFullscreen() {
+            const player = document.getElementById('moviePlayer');
+            
+            if (!document.fullscreenElement) {
+                if (player.requestFullscreen) {
+                    player.requestFullscreen();
+                } else if (player.webkitRequestFullscreen) {
+                    player.webkitRequestFullscreen();
+                } else if (player.msRequestFullscreen) {
+                    player.msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+        }
+        
+        // Close player when clicking outside the player content
+        document.getElementById('playerContainer').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePlayer();
+            }
+        });
+        
+        // Hero floating animation
+        const heroContent = document.querySelector('.hero-content');
+        heroContent.classList.add('floating');
+        
+        // Featured movies carousel navigation
+        const featuredMovies = document.querySelector('.featured-movies');
+        const featuredCards = document.querySelectorAll('.featured-card');
+        const cardWidth = featuredCards[0].offsetWidth + 15; // width + gap
+        
+        document.querySelector('.section-nav-btn:first-child').addEventListener('click', () => {
+            featuredMovies.scrollBy({ left: -cardWidth * 2, behavior: 'smooth' });
+        });
+        
+        document.querySelector('.section-nav-btn:last-child').addEventListener('click', () => {
+            featuredMovies.scrollBy({ left: cardWidth * 2, behavior: 'smooth' });
+        });
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileCloseBtn = document.getElementById('mobileCloseBtn');
+        const overlay = document.getElementById('overlay');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileNav.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        mobileCloseBtn.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        overlay.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Header Scroll Effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Rest of your JavaScript remains the same
+        // ...
+    </script>
+</body>
+</html>
