@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayush HUB | World's Best Background Remover</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS remains exactly the same as in your original file */
+        :root {
+            --primary-color: #6c5ce7;
+            --secondary-color: #a29bfe;
+            --dark-color: #2d3436;
+            --light-color: #f5f6fa;
+            --success-color: #00b894;
+            --warning-color: #fdcb6e;
+            --error-color: #d63031;
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #a29bfe;
+            --secondary-color: #6c5ce7;
+            --dark-color: #f5f6fa;
+            --light-color: #2d3436;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            transition: var(--transition);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--dark-color);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 0 40px;
+            position: relative;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: var(--dark-color);
+            opacity: 0.8;
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .upload-container {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            border: 2px dashed var(--primary-color);
+            transition: var(--transition);
+            animation: fadeIn 1s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        .upload-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .upload-area {
+            text-align: center;
+            cursor: pointer;
+            padding: 40px 20px;
+            border-radius: 15px;
+            transition: var(--transition);
+        }
+
+        .upload-area:hover {
+            background-color: rgba(108, 92, 231, 0.1);
+        }
+
+        .upload-icon {
+            font-size: 60px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .upload-area:hover .upload-icon {
+            transform: scale(1.1);
+        }
+
+        .upload-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .upload-text p {
+            font-size: 1rem;
+            color: var(--dark-color);
+            opacity: 0.7;
+        }
+
+        #file-input {
+            display: none;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(108, 92, 231, 0.1);
+        }
+
+        .image-preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+            animation: fadeIn 1s ease;
+        }
+
+        .preview-item {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .preview-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .preview-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .preview-actions {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .preview-item:hover .preview-actions {
+            transform: translateY(0);
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .action-btn:hover {
+            color: var(--secondary-color);
+            transform: scale(1.2);
+        }
+
+        .result-container {
+            margin-top: 60px;
+            text-align: center;
+            animation: fadeIn 1s ease;
+        }
+
+        .result-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+        }
+
+        .result-comparison {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .result-box {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+        }
+
+        .result-label {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .result-image {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .result-image:hover {
+            transform: scale(1.02);
+        }
+
+        .download-btn {
+            margin-top: 30px;
+        }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+
+        .loading-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .spinner {
+            width: 70px;
+            height: 70px;
+            border: 5px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        .loading-text {
+            color: white;
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+
+        .features {
+            padding: 80px 0;
+            background-color: rgba(108, 92, 231, 0.05);
+            margin-top: 80px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: var(--primary-color);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+
+        .feature-desc {
+            color: var(--dark-color);
+            opacity: 0.7;
+            line-height: 1.6;
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: var(--light-color);
+            text-decoration: none;
+            transition: var(--transition);
+            opacity: 0.8;
+        }
+
+        .footer-link:hover {
+            opacity: 1;
+            color: var(--secondary-color);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .social-link {
+            color: var(--light-color);
+            font-size: 20px;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .upload-container {
+                padding: 20px;
+            }
+            
+            .result-comparison {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .result-box {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo h1 {
+                font-size: 20px;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .upload-text h3 {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .feature-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>Ayush HUB</h1>
+            </div>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
+
+        <section class="hero">
+            <h2>Remove Background from Images</h2>
+            <p>Powered by AI to deliver professional results in seconds. No skills needed - just upload and download!</p>
+            
+            <div class="upload-container" id="uploadContainer">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <div class="upload-text">
+                        <h3>Upload Your Image</h3>
+                        <p>Drag & drop your image here or click to browse</p>
+                    </div>
+                    <input type="file" id="file-input" accept="image/*">
+                    <button class="btn" id="uploadBtn">Select Image</button>
+                </div>
+            </div>
+            
+            <div class="image-preview" id="imagePreview"></div>
+        </section>
+
+        <div class="result-container" id="resultContainer" style="display: none;">
+            <h3 class="result-title">Your Background-Free Image</h3>
+            <div class="result-comparison">
+                <div class="result-box">
+                    <div class="result-label">Original Image</div>
+                    <img src="" alt="Original" class="result-image" id="originalImage">
+                </div>
+                <div class="result-box">
+                    <div class="result-label">Background Removed</div>
+                    <img src="" alt="Result" class="result-image" id="resultImage">
+                </div>
+            </div>
+            <button class="btn download-btn" id="downloadBtn">
+                <i class="fas fa-download"></i> Download Image
+            </button>
+        </div>
+
+        <section class="features">
+            <h2 class="section-title">Why Choose Ayush HUB?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="feature-title">Lightning Fast</h3>
+                    <p class="feature-desc">Our AI processes images in seconds, saving you valuable time on editing.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3 class="feature-title">Pixel Perfect</h3>
+                    <p class="feature-desc">Get clean, professional cuts every time with our advanced algorithms.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="feature-title">Secure & Private</h3>
+                    <p class="feature-desc">Your images are processed securely and never stored on our servers.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Ayush HUB</div>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Home</a>
+                <a href="#" class="footer-link">About</a>
+                <a href="#" class="footer-link">Features</a>
+                <a href="#" class="footer-link">Pricing</a>
+                <a href="#" class="footer-link">Contact</a>
+            </div>
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; 2023 Ayush HUB. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <div class="loading-text">Removing Background...</div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            const themeToggle = document.getElementById('themeToggle');
+            const body = document.body;
+            const icon = themeToggle.querySelector('i');
+            
+            // Check for saved theme preference or use preferred color scheme
+            const savedTheme = localStorage.getItem('theme') || 
+                               (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            
+            // Apply the saved theme
+            if (savedTheme === 'dark') {
+                body.setAttribute('data-theme', 'dark');
+                icon.classList.replace('fa-moon', 'fa-sun');
+            }
+            
+            // Toggle theme on button click
+            themeToggle.addEventListener('click', function() {
+                if (body.getAttribute('data-theme') === 'dark') {
+                    body.removeAttribute('data-theme');
+                    icon.classList.replace('fa-sun', 'fa-moon');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    body.setAttribute('data-theme', 'dark');
+                    icon.classList.replace('fa-moon', 'fa-sun');
+                    localStorage.setItem('theme', 'dark');
+                }
+            });
+            
+            // File upload functionality
+            const fileInput = document.getElementById('file-input');
+            const uploadBtn = document.getElementById('uploadBtn');
+            const uploadArea = document.getElementById('uploadArea');
+            const imagePreview = document.getElementById('imagePreview');
+            const resultContainer = document.getElementById('resultContainer');
+            const originalImage = document.getElementById('originalImage');
+            const resultImage = document.getElementById('resultImage');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            
+            // Open file dialog when clicking upload area or button
+            uploadArea.addEventListener('click', function() {
+                fileInput.click();
+            });
+            
+            uploadBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                fileInput.click();
+            });
+            
+            // Handle file selection
+            fileInput.addEventListener('change', function(e) {
+                if (e.target.files.length > 0) {
+                    const file = e.target.files[0];
+                    processImage(file);
+                }
+            });
+            
+            // Drag and drop functionality
+            uploadArea.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                this.style.backgroundColor = 'rgba(108, 92, 231, 0.2)';
+            });
+            
+            uploadArea.addEventListener('dragleave', function(e) {
+                e.preventDefault();
+                this.style.backgroundColor = '';
+            });
+            
+            uploadArea.addEventListener('drop', function(e) {
+                e.preventDefault();
+                this.style.backgroundColor = '';
+                
+                if (e.dataTransfer.files.length > 0) {
+                    const file = e.dataTransfer.files[0];
+                    processImage(file);
+                }
+            });
+            
+            // Process the uploaded image with Remove.bg API
+            async function processImage(file) {
+                if (!file.type.match('image.*')) {
+                    alert('Please upload an image file (JPEG, PNG, etc.)');
+                    return;
+                }
+                
+                // Check file size (Remove.bg has a 10MB limit for the free API)
+                if (file.size > 10 * 1024 * 1024) {
+                    alert('File size too large. Please upload an image smaller than 10MB.');
+                    return;
+                }
+                
+                // Show loading overlay
+                loadingOverlay.classList.add('active');
+                
+                try {
+                    const reader = new FileReader();
+                    reader.onload = async function(e) {
+                        // Create preview item
+                        const previewItem = document.createElement('div');
+                        previewItem.className = 'preview-item';
+                        previewItem.innerHTML = `
+                            <img src="${e.target.result}" alt="Preview">
+                            <div class="preview-actions">
+                                <button class="action-btn" title="Remove">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                                <button class="action-btn" title="Download">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                                <button class="action-btn" title="Process Again">
+                                    <i class="fas fa-redo"></i>
+                                </button>
+                            </div>
+                        `;
+                        
+                        // Add event listeners to action buttons
+                        const actions = previewItem.querySelectorAll('.action-btn');
+                        actions[0].addEventListener('click', function() {
+                            previewItem.remove();
+                            if (imagePreview.children.length === 0) {
+                                resultContainer.style.display = 'none';
+                            }
+                        });
+                        
+                        actions[1].addEventListener('click', function() {
+                            downloadImage(e.target.result, `ayushhub-${Date.now()}.jpg`);
+                        });
+                        
+                        actions[2].addEventListener('click', function() {
+                            processImage(file);
+                        });
+                        
+                        // Add to preview container
+                        imagePreview.innerHTML = '';
+                        imagePreview.appendChild(previewItem);
+                        
+                        // Show original image
+                        originalImage.src = e.target.result;
+                        
+                        // Call Remove.bg API
+                        const formData = new FormData();
+                        formData.append('image_file', file);
+                        
+                        // For production, you should move this API call to a backend service
+                        // to keep your API key secure
+                        const response = await fetch('https://api.remove.bg/v1.0/removebg', {
+                            method: 'POST',
+                            headers: {
+                                'X-Api-Key': '3xZjVB57yBgiF1bmuU3trrpu' // Replace with your actual API key
+                            },
+                            body: formData
+                        });
+                        
+                        if (!response.ok) {
+                            const errorData = await response.json();
+                            throw new Error(errorData.errors ? errorData.errors[0].title : 'API request failed');
+                        }
+                        
+                        const blob = await response.blob();
+                        const resultUrl = URL.createObjectURL(blob);
+                        
+                        // Set result image
+                        resultImage.src = resultUrl;
+                        
+                        // Set download functionality
+                        downloadBtn.onclick = function() {
+                            downloadImage(resultUrl, `ayushhub-bgremoved-${Date.now()}.png`);
+                        };
+                        
+                        // Show result container
+                        resultContainer.style.display = 'block';
+                        
+                        // Hide loading overlay
+                        loadingOverlay.classList.remove('active');
+                        
+                        // Scroll to results
+                        resultContainer.scrollIntoView({ behavior: 'smooth' });
+                    };
+                    reader.readAsDataURL(file);
+                } catch (error) {
+                    console.error('Error processing image:', error);
+                    alert(`Error processing image: ${error.message}`);
+                    loadingOverlay.classList.remove('active');
+                }
+            }
+            
+            // Helper function to download images
+            function downloadImage(dataUrl, filename) {
+                const link = document.createElement('a');
+                link.href = dataUrl;
+                link.download = filename;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        });
+    </script>
+</body>
+</html>
